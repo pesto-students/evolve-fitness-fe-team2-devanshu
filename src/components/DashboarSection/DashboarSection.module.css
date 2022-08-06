@@ -1,0 +1,17 @@
+.DashboardSectionWrapper {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 8px 0px;
+  /* display: flex; */
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: row;
+  min-height: 50%;
+  float: left;
+  box-sizing: border-box;
+  /* overflow: scroll; */
+}
+.DashboardSectionWrapper::-webkit-scrollbar {
+  display: none;
+}

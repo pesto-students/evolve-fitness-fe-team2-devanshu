@@ -1,0 +1,36 @@
+.Servicescard_wraapper {
+  margin: 12px 12px 24px 12px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: var(--primary-bg);
+  border: 1px solid var(--border-white);
+  transition: transform 0.2s;
+}
+.Servicescard_wraapper:hover {
+  box-shadow: 1px solid black;
+  transform: scale(1.1);
+}
+.Servicescard_Imagewraapper {
+  height: 248px;
+  width: 328px;
+  border-radius: 15px;
+  position: relative;
+}
+.Servicescard_Imagewraapper > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.Servicescard_Discription {
+  margin-top: 12px;
+}
+.Servicescard_Title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--heading-text);
+}
+.Servicescard_para {
+  font-size: 14px;
+  color: var(--inactive-text);
+}
