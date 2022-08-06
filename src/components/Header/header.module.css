@@ -1,0 +1,65 @@
+.HeaderWapper {
+  width: 100%;
+  height: auto;
+  /* position: fixed; */
+  top: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0px auto;
+  color: white;
+  /* background: rgba(0, 0, 0, 0.7); */
+  background-color: #000000e3;
+  padding: 12px 0px;
+}
+.Logo > h1 {
+  font-weight: 900;
+}
+.HeaderSearch {
+  width: 50%;
+  background-color: rgb(55, 59, 59);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+}
+.HeaderSearchLeftSection {
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: left;
+  font-size: 15px;
+  border-right: 1px solid white;
+}
+.HeaderSearchRightSection {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  font-size: 15px;
+}
+.HeaderSearchRightSection > input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent !important;
+  outline: none;
+  border: none;
+  color: white !important;
+  border-radius: 10px;
+  position: relative;
+}
+.HeaderSearchResult {
+  display: none;
+  width: 30%;
+  height: 100px;
+  position: absolute;
+  z-index: 99;
+  background-color: red;
+  top: 61px;
+  border-radius: 5px;
+}
