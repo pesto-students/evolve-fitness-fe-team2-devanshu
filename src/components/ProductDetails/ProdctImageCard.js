@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
 import classes from "./ProudctImageCard.module.css";
 
 const ProdctImageCard = () => {
