@@ -14,6 +14,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 5px;
 }
 .ProductImageCard_Right_Grid {
   width: 100%;
@@ -27,6 +28,7 @@
   background-size: cover;
   margin-bottom: 6px;
   margin-top: -3px;
+  border-radius: 5px;
 }
 .ProductImageCard_Right_Grid_Two {
   width: 100%;
@@ -35,4 +37,5 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: 7px;
+  border-radius: 5px;
 }

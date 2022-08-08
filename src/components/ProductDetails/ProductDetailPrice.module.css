@@ -1,0 +1,26 @@
+.PrudctDetailPriceCard {
+  /* position: relative; */
+  width: 330px;
+  height: 180px;
+  margin: 12px;
+  background: linear-gradient(
+    129.04deg,
+    rgba(255, 255, 255, 0.4) 15.6%,
+    rgba(255, 254, 254, 0.1) 82.63%
+  );
+  border: 1px solid #ffffff;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  padding: 20px;
+  /* color: white; */
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.PrudctDetailPriceCard > h4 {
+  font-weight: 600;
+  font-size: 14px;
+}
+.PrudctDetailPriceDisc {
+  padding: 15px;
+}
