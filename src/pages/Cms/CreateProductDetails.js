@@ -246,7 +246,7 @@ export default class CreateProductDetails extends Component {
                   </option>
                   <option value="gym">Gym</option>
                   <option value="yoga">Yoga</option>
-                  <option value="jumba">Jumba</option>
+                  <option value="zumba">Zumba</option>
                   <option value="martialart">Martial Art</option>
                 </Form.Control>
               </Col>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductsCard from "../../components/Products/ProductsCard";
 import {
   Container,
@@ -9,8 +9,22 @@ import {
   Form,
 } from "react-bootstrap";
 import Banner from "../../components/Banner.js";
+import { getProductByFitnessType } from "../../services/cmsService";
+import { useParams } from "react-router-dom";
 
-function Products() {
+const Products = () => {
+  let { id } = useParams();
+  let [productData, setProductData] = useState([]);
+  useEffect(() => {
+    getProductByFitnessType(id)
+      .then((res) => {
+        setProductData(res.data.product);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
   let Data = [
     {
       Image:
@@ -70,24 +84,28 @@ function Products() {
       </div>
 
       <Container>
-        <Row
-          lg={2}
-          md={2}
-          // style={{
-          //   display: "flex",
-          //   flexWrap: "wrap",
-          //   justifyContent: "space-around",
-          // }}
-        >
-          {Data.map((item) => (
-            <Col lg={6} key={item.id}>
-              <ProductsCard key={item.id} data={item} />
-            </Col>
-          ))}
+        <Row lg={2} md={2}>
+          {productData.length > 0 ? (
+            productData.map((item) => (
+              <Col lg={6} key={item.id}>
+                <ProductsCard key={item.id} data={item} />
+              </Col>
+            ))
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                textAlign: "center",
+                textTransform: "capitalize",
+              }}
+            >
+              <h1>{` Data Not Found for "${id}"`}</h1>
+            </div>
+          )}
         </Row>
       </Container>
     </div>
   );
-}
+};
 
 export default Products;

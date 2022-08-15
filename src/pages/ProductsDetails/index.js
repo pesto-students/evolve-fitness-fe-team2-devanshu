@@ -26,8 +26,18 @@ const ProductsDetails = () => {
     <Container>
       <Breadcrumb>
         <Breadcrumb.Item onClick={() => navigate("/")}>Home</Breadcrumb.Item>
-        <Breadcrumb.Item onClick={() => navigate("/")}>Read</Breadcrumb.Item>
-        <Breadcrumb.Item active>{"prod"}</Breadcrumb.Item>
+        <Breadcrumb.Item
+          onClick={() =>
+            navigate(
+              `/Fitness-center/${Data.length > 0 ? Data[0].fitnessType : ""}`
+            )
+          }
+        >
+          {`All ${Data.length > 0 ? Data[0].fitnessType : ""} Center`}
+        </Breadcrumb.Item>
+        <Breadcrumb.Item active>{`${
+          Data.length > 0 ? Data[0].name : ""
+        }`}</Breadcrumb.Item>
       </Breadcrumb>
       <ProdctImageCard
         images={Data.length > 0 ? Data[0].featuredImageUrl : dummyUrl}
