@@ -9,10 +9,11 @@ import Products from "./pages/Products";
 import ProductsDetails from "./pages/ProductsDetails";
 import Blogs from "./pages/Blogs";
 import BlogsDetails from "./pages/BlogsDetails";
+import CreateProductDetails from "./pages/Cms/CreateProductDetails";
 
 function App() {
   return (
-    <div>
+    <div style={{ width: "100%", height: "100%" }}>
       <BrowserRouter>
         <Header />
         <Routes>
@@ -24,6 +25,7 @@ function App() {
           />
           <Route path="/blog" element={<Blogs />} />
           <Route path="/blog/:id" element={<BlogsDetails />} />
+          <Route path="/cms" element={<CreateProductDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>

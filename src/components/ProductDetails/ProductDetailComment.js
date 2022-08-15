@@ -1,57 +1,11 @@
 import React, { useState } from "react";
 
-const ProductDetailComment = () => {
+const ProductDetailComment = ({ comments }) => {
   // const [rating, setRating] = useState(0);
-  let data = [
-    {
-      id: 1,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "4.5",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-    {
-      id: 2,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "3.5",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-    {
-      id: 3,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "1.5",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-    {
-      id: 4,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "2.5",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-    {
-      id: 5,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "5.0",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-  ];
+
   return (
     <div class="container my-5 py-5">
-      {data.map((item) => (
+      {comments.map((item) => (
         <div class="row ">
           <div class="col-md-12 col-lg-12">
             <div class="text-dark py-5">

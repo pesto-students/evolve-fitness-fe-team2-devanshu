@@ -14,7 +14,7 @@ const Search = () => {
           type="text"
           placeholder="search for fitness center near you"
           name="fname"
-          autocomplete="off"
+          autoComplete="off"
         />
         <div className={classes.HeaderSearchResult}></div>
       </div>

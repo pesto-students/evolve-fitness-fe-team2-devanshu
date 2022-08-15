@@ -2,16 +2,14 @@ import React from "react";
 import classes from "./PrductDetailDiscription.module.css";
 import { Container, Row, Col } from "react-bootstrap";
 
-function ProductDetailDiscription() {
+function ProductDetailDiscription({ name, address }) {
+  console.log("ProductDetailDiscription", address);
   return (
     <Container style={{ marginTop: "12px" }}>
       <Row>
         <Col lg={7}>
-          <h1>The IRONMAN Fitness Club </h1>
-          <p>
-            Plot no. 124, Star Avenue, 1st Floor, Above Canara Bank, BDA Road,
-            BHEL, Awadhpuri, Bhopal, Madhya Pradesh 462021
-          </p>
+          <h1>{name}</h1>
+          <p>{`${address.city}, ${address.area}, ${address.state}, ${address.country}`}</p>
         </Col>
         <Col className={classes.ProductDetailDiscriptionAverage} lg={4}>
           <h4>Average Rating</h4>
