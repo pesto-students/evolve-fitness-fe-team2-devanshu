@@ -4,7 +4,7 @@ import ProductOverview from "./ProductOverview";
 import ProductRating from "./ProductRating";
 import ProductDetailPrice from "./ProductDetailPrice";
 
-function ProductDetailTab() {
+function ProductDetailTab({ description, address, price, name }) {
   return (
     <Tabs
       defaultActiveKey="Overview"
@@ -12,13 +12,13 @@ function ProductDetailTab() {
       className="mb-3"
     >
       <Tab eventKey="Overview" title="Overview">
-        <ProductOverview />
+        <ProductOverview description={description} address={address} />
       </Tab>
       <Tab eventKey="Price" title="Price">
-        <ProductDetailPrice />
+        <ProductDetailPrice price={price} />
       </Tab>
       <Tab eventKey="Reviews" title="Reviews">
-        <ProductRating />
+        <ProductRating name={name} />
       </Tab>
     </Tabs>
   );

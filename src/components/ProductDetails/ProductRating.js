@@ -3,12 +3,61 @@ import { Row, Col } from "react-bootstrap";
 import classes from "./ProductRating.module.css";
 import ProductDetailComment from "./ProductDetailComment";
 
-const ProductRating = () => {
+const ProductRating = ({ name }) => {
+  let data = [
+    {
+      id: 1,
+      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
+      UserName: "Lara Stewart",
+      pubDate: "March 15,2021",
+      rating: "4.5",
+      Message:
+        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
+    },
+    {
+      id: 2,
+      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
+      UserName: "Lara Stewart",
+      pubDate: "March 15,2021",
+      rating: "3.5",
+      Message:
+        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
+    },
+    {
+      id: 3,
+      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
+      UserName: "Lara Stewart",
+      pubDate: "March 15,2021",
+      rating: "1.5",
+      Message:
+        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
+    },
+    {
+      id: 4,
+      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
+      UserName: "Lara Stewart",
+      pubDate: "March 15,2021",
+      rating: "2.5",
+      Message:
+        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
+    },
+    {
+      id: 5,
+      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
+      UserName: "Lara Stewart",
+      pubDate: "March 15,2021",
+      rating: "5.0",
+      Message:
+        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
+    },
+  ];
   const [rating, setRating] = useState(0);
   return (
     <Row>
-      <Col lg={9} md={6}>
-        <h4>Hongkong Fitness center Reviews</h4>
+      <Col lg={12} md={12}>
+        <h4
+          style={{ textTransform: "capitalize" }}
+        >{`${name} Fitness center Reviews`}</h4>
 
         <div class="row ">
           <div class="col-md-12 col-lg-12">
@@ -103,7 +152,7 @@ const ProductRating = () => {
         </div>
         <hr class="my-0" />
         {/* </div> */}
-        <ProductDetailComment />
+        <ProductDetailComment comments={data} />
       </Col>
     </Row>
   );
