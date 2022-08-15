@@ -13,21 +13,9 @@ function DashboardSecton(props) {
           fontWeight: 500,
         }}
       >
-        Our services
+        {props.heading}
       </div>
-      <div
-        className={classes.DashboardSectionWrapper}
-        // style={{
-        //   display: "flex",
-        //   flexWrap: "nowrap",
-        //   overflowX: "scroll",
-        //   width: "100%",
-        //   marginBottom: "30px",
-        //   padding: "8px 0px",
-        // }}
-      >
-        {props.children}
-      </div>
+      <div className={classes.DashboardSectionWrapper}>{props.children}</div>
     </Container>
   );
 }

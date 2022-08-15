@@ -6,20 +6,18 @@ import { Link } from "react-router-dom";
 function ProductsCard(props) {
   return (
     <>
-      <Link to={`/Fitness-center-Details/${props.data.id}`}>
+      <Link to={`/Fitness-Center-Details/${props.data._id}`}>
         <div className={classes.Productscard_wraapper}>
           <div className={classes.Productscard_Imagewraapper}>
             <img
-              src={props.data.Image}
-              alt={props.data.heading}
+              src={props.data.featuredImageUrl[0]}
+              alt={props.data.name}
               // style={{ width: "100%", height: "250px", objectFit: "cover" }}
             />
           </div>
 
           <div className={classes.Productscard_Discription}>
-            <div className={classes.Productscard_Title}>
-              {props.data.heading}
-            </div>
+            <div className={classes.Productscard_Title}>{props.data.name}</div>
             <div className={classes.Productscard_Rating_Section}>
               <div className={classes.Productscard_Rating}>
                 <span
@@ -71,19 +69,10 @@ function ProductsCard(props) {
                       : "fa fa-star-o "
                   }
                 ></span>
-                {/* <span className={`${classes.checked} ${"fa fa-star"} `}></span>
-                <span className={`${classes.checked} ${"fa fa-star"} `}></span>
-                <span className={`${classes.checked} ${"fa fa-star"} `}></span>
-                <span
-                  className={`${classes.checked} ${"fa fa-star-half-full"}`}
-                ></span>
-                <span
-                  className={`${classes.checked} fa-regular fa-star`}
-                ></span> */}
               </div>
 
               <div className={classes.Productscard_Rating_Number}>
-                <div>{props.data.rating}</div>
+                <div>{4.5}</div>
                 <div style={{ marginLeft: "2px" }}>
                   <span
                     class="fa-regular fa-star"
@@ -92,7 +81,11 @@ function ProductsCard(props) {
                 </div>
               </div>
             </div>
-            <p className={classes.Productscard_para}>{props.data.para}</p>
+            <p className={classes.Productscard_para}>{`${
+              JSON.parse(props.data.address).city
+            },${JSON.parse(props.data.address).area},${
+              JSON.parse(props.data.address).state
+            },${JSON.parse(props.data.address).country}`}</p>
           </div>
         </div>
       </Link>

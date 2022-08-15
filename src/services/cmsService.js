@@ -12,5 +12,11 @@ const CreateProduct = (data) => {
 const getProduct = () => {
   return axios.get(`${baseURL}/product`);
 };
+const getProductById = (id) => {
+  return axios.get(`${baseURL}/product/${id}`);
+};
+const getProductByFitnessType = (id) => {
+  return axios.get(`${baseURL}/product/fitnessType/${id}`);
+};
 
-export { CreateProduct, getProduct };
+export { CreateProduct, getProduct, getProductById, getProductByFitnessType };

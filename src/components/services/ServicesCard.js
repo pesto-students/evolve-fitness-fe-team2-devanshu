@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ServicesCard = (props) => {
   return (
     <div className={classes.Servicescard_wraapper}>
-      <Link to={`/Fitness-center/${props.data.id}`}>
+      <Link to={`/Fitness-center/${props.data.type}`}>
         <div className={classes.Servicescard_Imagewraapper}>
           <img
             src={props.data.Image}

@@ -10,6 +10,7 @@ const Services = (props) => {
       id: "1",
       heading: "Gym Center Near You",
       para: "Explore The City To Gym Center",
+      type: "gym",
     },
     {
       Image:
@@ -17,6 +18,7 @@ const Services = (props) => {
       id: "2",
       heading: "Yoga Center Near You",
       para: "Explore The City Top Yoga Center",
+      type: "yoga",
     },
     {
       Image:
@@ -24,6 +26,7 @@ const Services = (props) => {
       id: "3",
       heading: "Zumba Center Near You",
       para: "Explore The City Top Zumba Center",
+      type: "zumba",
     },
     {
       Image:
@@ -31,11 +34,12 @@ const Services = (props) => {
       id: "4",
       heading: "Martial Art Center Near You",
       para: "Explore The City Top Martial Art Center",
+      type: "martialart",
     },
   ];
   console.log("data", Data);
   return (
-    <DashboardSecton>
+    <DashboardSecton heading={"Our Services"}>
       {Data.map((item) => (
         <ServicesCard key={item.id} data={item} />
       ))}
