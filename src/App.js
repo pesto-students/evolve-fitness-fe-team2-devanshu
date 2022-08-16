@@ -10,10 +10,13 @@ import ProductsDetails from "./pages/ProductsDetails";
 import Blogs from "./pages/Blogs";
 import BlogsDetails from "./pages/BlogsDetails";
 import CreateProductDetails from "./pages/Cms/CreateProductDetails";
+import { Modal } from "react-bootstrap";
+import Login from "./components/Login";
 
 function App() {
   return (
     <div style={{ width: "100%", height: "100%" }}>
+      <Login />
       <BrowserRouter>
         <Header />
         <Routes>

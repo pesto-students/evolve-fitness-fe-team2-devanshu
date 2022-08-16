@@ -1,9 +1,21 @@
-import React from 'react'
+import React from "react";
+import { Container, Breadcrumb } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import BlogDetailImageCard from "../../components/Blog/BlogDetailImageCard";
+import BlogImageGrid from "../../components/Blog/BlogImageGrid";
 
-function Blogs() {
+const Blogs = () => {
+  const navigate = useNavigate();
   return (
-    <div>Blogs</div>
-  )
-}
+    <Container>
+      <Breadcrumb>
+        <Breadcrumb.Item onClick={() => navigate("/")}>Home</Breadcrumb.Item>
+        <Breadcrumb.Item active>{`All Blogs`}</Breadcrumb.Item>
+      </Breadcrumb>
+      <BlogDetailImageCard />
+      <BlogImageGrid />
+    </Container>
+  );
+};
 
-export default Blogs
+export default Blogs;

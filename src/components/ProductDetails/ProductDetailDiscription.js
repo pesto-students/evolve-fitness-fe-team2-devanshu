@@ -3,7 +3,6 @@ import classes from "./PrductDetailDiscription.module.css";
 import { Container, Row, Col } from "react-bootstrap";
 
 function ProductDetailDiscription({ name, address }) {
-  console.log("ProductDetailDiscription", address);
   return (
     <Container style={{ marginTop: "12px" }}>
       <Row>
