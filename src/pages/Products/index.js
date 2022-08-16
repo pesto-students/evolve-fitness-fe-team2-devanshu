@@ -19,7 +19,6 @@ const Products = () => {
     getProductByFitnessType(id)
       .then((res) => {
         setProductData(res.data.product);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

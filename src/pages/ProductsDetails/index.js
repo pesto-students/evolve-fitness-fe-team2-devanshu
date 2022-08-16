@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import ProdctImageCard from "../../components/ProductDetails/ProdctImageCard";
 import { Breadcrumb, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ProductDetailTab from "../../components/ProductDetails/ProductDetailTab";
 import ProductDetailDiscription from "../../components/ProductDetails/ProductDetailDiscription";
-import { getProduct } from "../../services/cmsService";
+import { getProductById } from "../../services/cmsService";
 
 const ProductsDetails = () => {
   const navigate = useNavigate();
+  let { id } = useParams();
   let [Data, setData] = useState([]);
   let [dummyUrl, setDummyUrl] = useState([
     "https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg",
@@ -15,10 +17,9 @@ const ProductsDetails = () => {
     "https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg",
   ]);
   useEffect(() => {
-    getProduct()
+    getProductById(id)
       .then((res) => {
-        setData(res.data.ProductData);
-        console.log(JSON.parse(res.data.ProductData[0].address));
+        setData(res.data.product);
       })
       .catch((err) => {});
   }, []);

@@ -4,8 +4,6 @@ import DirectionIcon from "../../assests/ProducDetials/Direction.svg";
 import { Row, Col } from "react-bootstrap";
 
 const ProductOverview = ({ description, address }) => {
-  console.log("ProductOverview", address.url);
-
   return (
     <Row>
       <Col lg={9} md={6}>
