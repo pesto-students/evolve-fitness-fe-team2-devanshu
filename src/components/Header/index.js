@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./header.module.css";
 import Search from "./Search";
 import UserLogin from "../../assests/headerIcons/user.png";
-import { Link } from "react-router-dom";
+import Logo from "../../assests/headerIcons/Logo.png";
+import BlackLogo from "../../assests/headerIcons/BlackLogo.png";
+import { Link, useLocation } from "react-router-dom";
+
+//  User Slice
 import {
   setActiveUser,
   setUerLogOut,
@@ -11,48 +15,62 @@ import {
   selectUserEmail,
   selectUserToken,
   selectUserImage,
+  selectUserAnonymous,
 } from "../../Redux/features/UserSlice";
+
+// header slice
 import { setModel } from "../../Redux/features/HeaderSlice";
+
+//  firebase
 import {
   signInAnonymously,
   onAuthStateChanged,
   getIdToken,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.config";
 
 import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
+  let location = useLocation();
   let dispatch = useDispatch();
   let userName = useSelector(selectUserName);
   let userEmail = useSelector(selectUserEmail);
   let userToken = useSelector(selectUserToken);
   let userImage = useSelector(selectUserImage);
-  useEffect(() => {
+
+  const [displayHeader, setDisplayHeader] = useState(false);
+
+  const CreateAnonymousUser = () => {
     signInAnonymously(auth)
       .then((res) => {
-        // Signed in..
-        dispatch(
-          setUerToken({
-            Token: res.user.accessToken,
-          })
-        );
+       
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ...
       });
+  };
+  useEffect(() => {
+    // setDisplayHeader(true);
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        console.log("uid", uid);
-        // ...
+
+        dispatch(
+          setActiveUser({
+            userId: user.uid,
+            userName: user.displayName,
+            userEmail: user.email,
+            photoURL: user.photoURL,
+            isAnonymous: user.isAnonymous,
+          })
+        );
       } else {
-        // User is signed out
-        // ...
+        CreateAnonymousUser();
       }
     });
   }, []);
@@ -65,28 +83,40 @@ const Header = () => {
   };
 
   const handelSignOut = () => {
-    console.log("inside signout");
-    // firebase
-    //   .auth()
-    //   .signOut()
-    //   .then(() => {
-    //     dispatch(
-    //       setUerLogOut({
-    //         userName: null,
-    //         userEmail: null,
-    //         photoURL: null,
-    //       })
-    //     );
-    //   });
+    signOut(auth)
+      .then(() => {
+        dispatch(
+          setUerLogOut({
+            userId: null,
+            userName: null,
+            userEmail: null,
+            photoURL: null,
+          })
+        );
+        CreateAnonymousUser();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <div className={classes.HeaderWapper}>
       <div className={classes.Logo}>
-        <h1>Evolve Fitness</h1>
+        <img
+          src={BlackLogo}
+          alt="EvolveFitness"
+          style={{
+            display:
+              location.pathname === "/create-fitness-center" ||
+              location.pathname === "/"
+                ? "none"
+                : "",
+          }}
+        />
       </div>
       <Search />
-      <div>
+      <div className={classes.UserImageWrapper}>
         {userImage === null ? (
           <img
             src={UserLogin}

@@ -3,7 +3,7 @@ import auth from "./authentication";
 const baseURL = "http://localhost:8000/api";
 
 const CreateProduct = (data) => {
-  return axios.post(`${baseURL}/product/create`, data);
+  return axios.post(`${baseURL}/product/create`, data, { auth: auth });
 };
 
 const getProduct = () => {
