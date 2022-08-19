@@ -1,55 +1,137 @@
 import React from "react";
-import classes from "./footer.module.css";
+import classNamees from "./footer.module.css";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
+import Logo from "../../assests/headerIcons/Logo.png";
 
 function Footer() {
   return (
-    <div className={classes.FooterContainer}>
-      <div className={classes.FooterWrapper}>
-        <div className={classes.Logo}>Evolve Fitness</div>
-        <div className={classes.Menu}>
-          <h6>MENU</h6>
-          <p>
-            <Link to="/">Dashboard</Link>
-          </p>
-          <p>
-            <Link to="/blog">Blog</Link>
-          </p>
-          <p>
-            <Link to={`/Fitness-center/gym`}>Gym Center</Link>
-          </p>
-          <p>
-            <Link to={`/Fitness-center/yoga`}>Yoga Center</Link>
-          </p>
-          <p>
-            <Link to={`/Fitness-center/zumba`}>zumba Center</Link>
-          </p>
-          <p>
-            <Link to={`/Fitness-center/martialart`}>Martial Art Center</Link>
-          </p>
+    <div className={classNamees.FooterContainer}>
+      <footer className="text-center text-lg-start text-white">
+        <div className="container p-4">
+          <div className="row my-4">
+            <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <div
+                className=" shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto"
+                style={{ width: "150px", height: "150px" }}
+              >
+                <img src={Logo} height="70" alt="" loading="lazy" />
+              </div>
+
+              <p className="text-center">Fitness center at one place</p>
+
+              <ul className="list-unstyled d-flex flex-row justify-content-center">
+                <li>
+                  <Link className="text-white px-2" to="/">
+                    <i className="fab fa-facebook-square"></i>
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-white px-2" to="/">
+                    <i className="fab fa-instagram"></i>
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-white ps-2" to="/">
+                    <i className="fab fa-youtube"></i>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 className="text-uppercase mb-4">MENU</h5>
+
+              <ul className="list-unstyled">
+                <li className="mb-2">
+                  <Link to="/" className="text-white">
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link to="/blog" className="text-white">
+                    Blog
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link to={`/Fitness-center/gym`} className="text-white">
+                    Gym Center
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link to={`/Fitness-center/yoga`} className="text-white">
+                    Yoga Center
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link to={`/Fitness-center/zumba`} className="text-white">
+                    zumba Center
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    to={`/Fitness-center/martialart`}
+                    className="text-white"
+                  >
+                    Martial Art Center
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 className="text-uppercase mb-4">For Fitness Center</h5>
+
+              <ul className="list-unstyled">
+                <li className="mb-2">
+                  <Link to="/partner-with-us" className="text-white">
+                    partner-with-us
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link to="/contact-us" className="text-white">
+                    contact us
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 className="text-uppercase mb-4">Contact</h5>
+
+              <ul className="list-unstyled">
+                <li>
+                  <p>
+                    <i className="fas fa-map-marker-alt pe-2"></i>Warsaw, 57
+                    Street, Poland
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <i className="fas fa-phone pe-2"></i>+ 01 234 567 89
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <i className="fas fa-envelope pe-2 mb-0"></i>
+                    contact@example.com
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className={classes.Menu}>
-          <h6>BISUNESS</h6>
-          <p>
-            <Link to="/partner-with-us">partner-with-us</Link>
-          </p>
-          <p>
-            <Link to="/contact-us">contact us</Link>
-          </p>
+
+        <div
+          className="text-center p-3"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+        >
+          Copyright © {new Date().getFullYear()} Evolve Fitness All rights
+          reserved.
         </div>
-        <div className={classes.Menu}>
-          <h6>CONTACT US</h6>
-          <p>MY company,42 Avenue Das Champs</p>
-          <p>Call Us Now (0123-458-789)</p>
-          <p>Email EvolveFitness@gmail.com</p>
-        </div>
-      </div>
-      <div className={classes.FooterCopyRightSection}>
-        Copyright © {new Date().getFullYear()} <span> Evolve Fitness </span> All
-        rights reserved
-      </div>
+      </footer>
     </div>
+    // End of .container -->
   );
 }
 

@@ -32,10 +32,15 @@
   font-weight: 600;
   margin: 0px 12px;
 }
-.Logo {
-  font-size: calc(1.375rem + 1.5vw);
+.Logo > img {
+  width: 180px;
+  margin: 40px 15px;
+  /* font-size: calc(1.375rem + 1.5vw); */
 }
-
+.MenuWrap {
+  display: flex;
+  flex-wrap: wrap;
+}
 .Menu {
   display: flex;
   flex-direction: column;

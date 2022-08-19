@@ -5,11 +5,11 @@ import classes from "./header.module.css";
 const Search = () => {
   return (
     <div className={classes.HeaderSearch}>
-      <div className={classes.HeaderSearchLeftSection}>
-        <img src={LocationIcon} alt="location" />
-        <div>{"Bhopal,awadhpuri"}</div>
-      </div>
-      <div className={classes.HeaderSearchRightSection}>
+      {/* <div className={classes.HeaderSearchLeftSection}> */}
+      <img src={LocationIcon} alt="location" />
+      <div>{"Bhopal,awadhpuri"}</div>
+      {/* </div> */}
+      {/* <div className={classes.HeaderSearchRightSection}>
         <input
           type="text"
           placeholder="search for fitness center near you"
@@ -17,7 +17,7 @@ const Search = () => {
           autoComplete="off"
         />
         <div className={classes.HeaderSearchResult}></div>
-      </div>
+      </div> */}
     </div>
   );
 };
