@@ -41,12 +41,9 @@ const Header = () => {
   let userImage = useSelector(selectUserImage);
 
   const [displayHeader, setDisplayHeader] = useState(false);
-
   const CreateAnonymousUser = () => {
     signInAnonymously(auth)
-      .then((res) => {
-       
-      })
+      .then((res) => {})
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -101,21 +98,21 @@ const Header = () => {
   };
 
   return (
-    <div className={classes.HeaderWapper}>
+    <div
+      className={classes.HeaderWapper}
+      style={{
+        display:
+          location.pathname === "/create-fitness-center" ||
+          location.pathname === "/partner-with-us"
+            ? "none"
+            : "",
+      }}
+    >
       <div className={classes.Logo}>
-        <img
-          src={BlackLogo}
-          alt="EvolveFitness"
-          style={{
-            display:
-              location.pathname === "/create-fitness-center" ||
-              location.pathname === "/"
-                ? "none"
-                : "",
-          }}
-        />
+        <img src={Logo} alt="EvolveFitness" />
+
+        <Search />
       </div>
-      <Search />
       <div className={classes.UserImageWrapper}>
         {userImage === null ? (
           <img
@@ -128,15 +125,15 @@ const Header = () => {
           />
         ) : (
           <img
-            src={
-              userImage ||
-              "https://storage.googleapis.com/prod-aawz2-bckt/orig/category/cat_icon_image_66b9ea.svg"
-            }
+            src={userImage}
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src = UserLogin;
+            }}
             alt="user"
             width={35}
             height={35}
             onClick={() => handelSignOut()}
-            // className={classes.UserImg}
             style={{ cursor: "pointer", borderRadius: "50%" }}
           />
         )}

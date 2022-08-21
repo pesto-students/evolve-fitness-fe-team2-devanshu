@@ -82,10 +82,10 @@ function ProductsCard(props) {
               </div>
             </div>
             <p className={classes.Productscard_para}>{`${
-              JSON.parse(props.data.address).city
-            },${JSON.parse(props.data.address).area},${
-              JSON.parse(props.data.address).state
-            },${JSON.parse(props.data.address).country}`}</p>
+             props.data.address.city
+            },${props.data.address.area},${
+              props.data.address.state
+            },${props.data.address.country}`}</p>
           </div>
         </div>
       </Link>

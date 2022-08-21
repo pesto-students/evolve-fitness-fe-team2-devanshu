@@ -10,11 +10,12 @@
   flex-wrap: wrap;
   margin: 0px auto;
   color: white;
-  background: transparent;
+  background-color: #000000;
   padding: 12px 0px;
 }
 .Logo {
   margin-left: 12px;
+  display: flex;
 }
 .Logo > img {
   width: 150px;
@@ -23,13 +24,15 @@
   margin-right: 12px;
 }
 .HeaderSearch {
-  width: 50%;
-  background-color: rgb(55, 59, 59);
+  width: 100%;
+  /* background-color: rgb(55, 59, 59); */
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   border-radius: 10px;
-  padding: 15px;
+  margin-left: 60px;
+  color: white;
+  /* padding: 15px; */
 }
 .HeaderSearchLeftSection {
   width: 25%;
@@ -51,7 +54,7 @@
 .HeaderSearchRightSection > input {
   width: 100%;
   height: 100%;
-  background-color: transparent !important;
+  background-color: #0000 !important;
   outline: none;
   border: none;
   color: white !important;
@@ -67,4 +70,18 @@
   background-color: red;
   top: 61px;
   border-radius: 5px;
+}
+
+.LoactionFilter {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid white !important;
+  border-radius: 0px !important;
+  width: auto !important;
+  color: white !important;
+}
+.LoactionFilter > option {
+  background-color: transparent !important;
+  color: #000000;
 }

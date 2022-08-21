@@ -31,7 +31,8 @@ const PartnerLogin = () => {
 
   // Partner Googele sign in
   const googleSignIn = async () => {
-    if (!CheckAdmin && CheckAdmin === null) {
+    console.log("cfede", CheckAdmin);
+    if ((!CheckAdmin && CheckAdmin === null) || CheckAdmin === undefined) {
       const provider = new GoogleAuthProvider();
       const anonymousUser = auth.currentUser;
       anonymousUser.delete();

@@ -1,159 +1,260 @@
-import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Row, Col, Form, Button } from "react-bootstrap";
 import classes from "./ProductRating.module.css";
 import ProductDetailComment from "./ProductDetailComment";
+import UserLogo from "../../assests/headerIcons/user.png";
 
-const ProductRating = ({ name }) => {
-  let data = [
-    {
-      id: 1,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "4.5",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-    {
-      id: 2,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "3.5",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-    {
-      id: 3,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "1.5",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-    {
-      id: 4,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "2.5",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-    {
-      id: 5,
-      UserImage: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp",
-      UserName: "Lara Stewart",
-      pubDate: "March 15,2021",
-      rating: "5.0",
-      Message:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites.",
-    },
-  ];
-  const [rating, setRating] = useState(0);
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectUserImage,
+  selectUserId,
+  selectUserName,
+  selectUserAnonymous,
+} from "../../Redux/features/UserSlice";
+
+import { PostReview } from "../../services/cmsService";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Avatar from "react-avatar";
+import { setModel } from "../../Redux/features/HeaderSlice";
+
+const ProductRating = ({ name, comments }) => {
+  let param = useParams();
+  let dispatch = useDispatch();
+  let UserName = useSelector(selectUserName);
+  let UserId = useSelector(selectUserId);
+  let userImage = useSelector(selectUserImage);
+  const isAnonymous = useSelector(selectUserAnonymous);
+
+  const [rating, setRating] = useState(1);
+  const [text, setText] = useState("");
+  const [commentsData, setCommentsData] = useState([]);
+
+  const HandelCencel = () => {
+    setRating(0);
+    setText("");
+  };
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+
+    let data = {
+      text: text,
+      stars: rating,
+      userName: UserName,
+      userId: UserId,
+    };
+    if (text !== "") {
+      await PostReview(data, param.id)
+        .then((res) => {
+          setText("");
+          setCommentsData([...commentsData, data]);
+        })
+        .catch((err) => {
+          toast.error("review add failed");
+        });
+    }
+  };
+
+  useEffect(() => {
+    if (comments) {
+      setCommentsData([...comments]);
+    }
+  }, [comments]);
   return (
     <Row>
-      <Col lg={12} md={12}>
-        <h4
-          style={{ textTransform: "capitalize" }}
-        >{`${name} Fitness center Reviews`}</h4>
+      {isAnonymous ? (
+        <Col lg={12} md={12}>
+          <h4
+            style={{ textTransform: "capitalize" }}
+          >{`${name} Fitness center Reviews`}</h4>
 
-        <div class="row ">
-          <div class="col-md-12 col-lg-12">
-            <div class="card text-dark">
-              <hr class="my-0" />
+          <div className="row ">
+            <div className="col-md-12 col-lg-12">
+              <div className="text-dark">
+                <hr className="my-0" />
 
-              <div class="card-body p-4">
-                <div class="d-flex flex-start">
-                  <img
-                    class="rounded-circle shadow-1-strong me-3"
-                    src={
-                      "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp"
-                    }
-                    alt="avatar"
-                    width="60"
-                    height="60"
-                  />
-                  <div>
-                    <h6 class="fw-bold mb-1">{"UserName"}</h6>
-                    <div class="d-flex align-items-center mb-3">
-                      <p class="mb-1">{"Aug 8 ,2022"}</p>
-                      <span class="badge bg-success">
-                        <span
-                          className={
-                            rating >= 1
-                              ? "fa fa-star"
-                              : rating >= 0.5
-                              ? "fa fa-star-half-o"
-                              : "fa fa-star-o"
-                          }
-                          onClick={() => setRating(1)}
-                        ></span>
-                        <span
-                          className={
-                            rating >= 2
-                              ? "fa fa-star"
-                              : rating >= 1.5
-                              ? "fa fa-star-half-o"
-                              : "fa fa-star-o"
-                          }
-                          onClick={() => setRating(2)}
-                        ></span>
-                        <span
-                          className={
-                            rating >= 3
-                              ? "fa fa-star"
-                              : rating >= 2.5
-                              ? "fa fa-star-half-o"
-                              : "fa fa-star-o"
-                          }
-                          onClick={() => setRating(3)}
-                        ></span>
-                        <span
-                          className={
-                            rating >= 4
-                              ? "fa fa-star"
-                              : rating >= 3.5
-                              ? "fa fa-star-half-o"
-                              : "fa fa-star-o"
-                          }
-                          onClick={() => setRating(4)}
-                        ></span>
-                        <span
-                          className={
-                            rating >= 5
-                              ? "fa fa-star classes.checked"
-                              : rating >= 4.5
-                              ? "fa fa-star-half-o classes.checked"
-                              : "fa fa-star-o "
-                          }
-                          onClick={() => setRating(5)}
-                        ></span>
-                      </span>
-                      <div class="badge bg-success"></div>
-                    </div>
+                <div className="p-4">
+                  <div className="d-flex flex-start">
+                    <img
+                      className="rounded-circle shadow-1-strong me-3"
+                      src={UserLogo}
+                      alt="avatar"
+                      width="60"
+                      height="60"
+                    />
                   </div>
+                  <Form.Group>
+                    <Form.Control
+                      as="textarea"
+                      rows={1}
+                      placeholder="Write your Review here.."
+                      value={text}
+                      onClick={() =>
+                        dispatch(
+                          setModel({
+                            Model: true,
+                          })
+                        )
+                      }
+                      onChange={() =>
+                        dispatch(
+                          setModel({
+                            Model: true,
+                          })
+                        )
+                      }
+                      style={{
+                        outline: "none",
+                        width: "100%",
+                        border: "none",
+                        borderBottom: "1px solid black",
+                        boxShadow: "none",
+                      }}
+                    />
+                  </Form.Group>
                 </div>
-                <textarea
-                  style={{
-                    outline: "none",
-                    width: "100%",
-                    border: "none",
-                    borderBottom: "1px solid black",
-                  }}
-                  placeholder="Write your Review here.."
-                ></textarea>
-                <button>Cencel</button>
-                <button>submit</button>
               </div>
             </div>
           </div>
-        </div>
-        <hr class="my-0" />
-        {/* </div> */}
-        <ProductDetailComment comments={data} />
-      </Col>
+
+          <ProductDetailComment comments={commentsData} />
+        </Col>
+      ) : (
+        <Col lg={12} md={12}>
+          <h4
+            style={{ textTransform: "capitalize" }}
+          >{`${name} Fitness center Reviews`}</h4>
+
+          <div className="row ">
+            <div className="col-md-12 col-lg-12">
+              <div className="text-dark">
+                <hr className="my-0" />
+
+                <div className="p-4">
+                  <Form onSubmit={HandleSubmit}>
+                    <div className="d-flex flex-start">
+                      {UserName !== null ? (
+                        <Avatar
+                          name={UserName}
+                          size="60"
+                          round={true}
+                          className="rounded-circle shadow-1-strong me-3"
+                        />
+                      ) : (
+                        <img
+                          className="rounded-circle shadow-1-strong me-3"
+                          src={userImage}
+                          alt="avatar"
+                          width="60"
+                          height="60"
+                        />
+                      )}
+                      <div>
+                        <h6 className="fw-bold mb-1">{UserName}</h6>
+                        <div className="d-flex align-items-center">
+                          <div className="mb-3">{`${new Date().toLocaleString(
+                            "en-us",
+                            {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            }
+                          )}`}</div>
+                          <div
+                            className="badge bg-success mb-3 "
+                            style={{ marginLeft: "12px" }}
+                          >
+                            <span
+                              className={
+                                rating >= 1
+                                  ? "fa fa-star"
+                                  : rating >= 0.5
+                                  ? "fa fa-star-half-o"
+                                  : "fa fa-star-o"
+                              }
+                              onClick={() => setRating(1)}
+                            ></span>
+                            <span
+                              className={
+                                rating >= 2
+                                  ? "fa fa-star"
+                                  : rating >= 1.5
+                                  ? "fa fa-star-half-o"
+                                  : "fa fa-star-o"
+                              }
+                              onClick={() => setRating(2)}
+                            ></span>
+                            <span
+                              className={
+                                rating >= 3
+                                  ? "fa fa-star"
+                                  : rating >= 2.5
+                                  ? "fa fa-star-half-o"
+                                  : "fa fa-star-o"
+                              }
+                              onClick={() => setRating(3)}
+                            ></span>
+                            <span
+                              className={
+                                rating >= 4
+                                  ? "fa fa-star"
+                                  : rating >= 3.5
+                                  ? "fa fa-star-half-o"
+                                  : "fa fa-star-o"
+                              }
+                              onClick={() => setRating(4)}
+                            ></span>
+                            <span
+                              className={
+                                rating >= 5
+                                  ? "fa fa-star "
+                                  : rating >= 4.5
+                                  ? "fa fa-star-half-o "
+                                  : "fa fa-star-o "
+                              }
+                              onClick={() => setRating(5)}
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <Form.Group>
+                      <Form.Control
+                        as="textarea"
+                        rows={1}
+                        placeholder="Write your Review here.."
+                        name="text"
+                        value={text}
+                        maxLength={350}
+                        onChange={(e) => setText(e.target.value)}
+                        style={{
+                          outline: "none",
+                          width: "100%",
+                          border: "none",
+                          borderBottom: "1px solid black",
+                          boxShadow: "none",
+                        }}
+                      />
+                    </Form.Group>
+                    <div style={{ display: "flex", justifyContent: "end" }}>
+                      <Button
+                        onClick={() => HandelCencel()}
+                        className={classes.CencleBtn}
+                      >
+                        Cencel
+                      </Button>
+                      <Button type="submit" className={classes.SubmitBtn}>
+                        submit
+                      </Button>
+                    </div>
+                  </Form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ProductDetailComment comments={commentsData} />
+        </Col>
+      )}
     </Row>
   );
 };
