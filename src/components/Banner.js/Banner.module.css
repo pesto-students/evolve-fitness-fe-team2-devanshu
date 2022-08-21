@@ -24,3 +24,26 @@
   opacity: 1;
   transition: all 1.4s ease 0s;
 }
+.BannerHeaderContainer {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0px;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0px auto;
+  background: transparent;
+  padding: 12px 0px;
+}
+.BannerLogo {
+  margin-left: 12px;
+}
+.BannerLogo > img {
+  width: 150px;
+}
+.BannerUserImageWrapper {
+  margin-right: 12px;
+}

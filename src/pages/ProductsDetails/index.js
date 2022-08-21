@@ -23,6 +23,7 @@ const ProductsDetails = () => {
       })
       .catch((err) => {});
   }, []);
+
   return (
     <Container>
       <Breadcrumb>
@@ -45,13 +46,15 @@ const ProductsDetails = () => {
       />
       <ProductDetailDiscription
         name={Data.length > 0 ? Data[0].name : ""}
-        address={Data.length > 0 ? JSON.parse(Data[0].address) : ""}
+        address={Data.length > 0 ? Data[0].address : ""}
+        comments={Data.length > 0 ? Data[0].reviews : ""}
       />
       <ProductDetailTab
         description={Data.length > 0 ? Data[0].description : ""}
-        address={Data.length > 0 ? JSON.parse(Data[0].address) : ""}
-        price={Data.length > 0 ? JSON.parse(Data[0].price) : ""}
+        address={Data.length > 0 ? Data[0].address : ""}
+        price={Data.length > 0 ? Data[0].price : ""}
         name={Data.length > 0 ? Data[0].name : ""}
+        comments={Data.length > 0 ? Data[0].reviews : ""}
       />
     </Container>
   );

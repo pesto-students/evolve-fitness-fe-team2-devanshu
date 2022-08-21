@@ -8,6 +8,7 @@ const initialState = {
   Token: null,
   isAnonymous: null,
   isAdmin: 0,
+  cityName: "bhopal",
 };
 
 const UserSlice = createSlice({
@@ -33,10 +34,13 @@ const UserSlice = createSlice({
     setAdmin: (state, action) => {
       state.isAdmin = action.payload.isAdmin;
     },
+    setCity: (state, action) => {
+      state.cityName = action.payload.city;
+    },
   },
 });
 
-export const { setActiveUser, setUerLogOut, setUerToken, setAdmin } = UserSlice.actions;
+export const { setActiveUser, setUerLogOut, setUerToken, setAdmin, setCity } = UserSlice.actions;
 
 export const selectUserName = (state) => state.user.userName;
 export const selectUserEmail = (state) => state.user.userEmail;
@@ -45,5 +49,6 @@ export const selectUserImage = (state) => state.user.photoURL;
 export const selectUserId = (state) => state.user.userId;
 export const selectUserAnonymous = (state) => state.user.isAnonymous;
 export const selectIsAdmin = (state) => state.user.isAdmin;
+export const selectCity = (state) => state.user.cityName;
 
 export default UserSlice.reducer;

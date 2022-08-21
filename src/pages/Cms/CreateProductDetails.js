@@ -5,11 +5,12 @@ import ProdctImageCard from "../../components/ProductDetails/ProdctImageCard";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import classes from "./CreatProductDetail.module.css";
-import { CreateProduct } from "../../services/cmsService";
+import { CreateProduct, UpdateProduct } from "../../services/cmsService";
 import { GetProductByOwnerId } from "../../services/admiService";
 import Loader from "../../components/Loader";
 import { connect } from "react-redux";
 import withNavigateHook from "../../components/withNavigateHook";
+import { toast } from "react-toastify";
 
 class CreateProductDetails extends Component {
   state = {
@@ -89,7 +90,7 @@ class CreateProductDetails extends Component {
     this.setState({
       address: {
         ...this.state.address,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value.toLowerCase(),
       },
     });
   };
@@ -150,8 +151,7 @@ class CreateProductDetails extends Component {
 
     CreateProduct(formData)
       .then((res) => {
-        console.log(res);
-        e.target.reset();
+        toast.success(`${res.data.name} created sucessfully`);
         this.setState({ isLoading: false });
         this.props.navigation(`/create-fitness-center/${this.props.userId}`);
       })
@@ -162,49 +162,83 @@ class CreateProductDetails extends Component {
   };
 
   // Form update  updateHandeler
-  updateHandeler = (e) => {
+  updateHandeler = async (e) => {
     e.preventDefault();
     this.setState({ isLoading: true });
+    console.log(this.state);
+    let formData = new FormData();
+    for (let [key, value] of Object.entries(this.state)) {
+      switch (key) {
+        case "isLoading":
+          break;
+        case "Edit":
+          break;
+        case "address":
+          formData.append(`${key}`, JSON.stringify(value));
+          break;
+        case "price":
+          formData.append(`${key}`, JSON.stringify(value));
+          break;
+        case "featuredImageUrl":
+          for (let i = 0; i < this.state.featuredImageUrl.length; i++) {
+            formData.append("featuredImageUrl", this.state.featuredImageUrl[i]);
+          }
+          break;
+
+        default:
+          formData.append(`${key}`, value);
+      }
+    }
+
+    await UpdateProduct(formData, this.state._id, this.props.userId)
+      .then((res) => {
+        console.log(res);
+        toast.success(`${res.data.name} updated sucessfully`);
+        this.setState({ isLoading: false });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(` updated failed`);
+        this.setState({ isLoading: false });
+      });
   };
   componentDidMount() {
-   
-    this.setState({isLoading : true})
+    this.setState({ gymOwnerId: this.props.userId });
+
     if (this.props.param.id !== undefined) {
-      this.setState({ Edit: true });
-      
+      this.setState({ isLoading: true });
       GetProductByOwnerId(this.props.param.id)
         .then((res) => {
-           if (res.status === 200) {
-          let {
-            featuredImageUrl,
-            name,
-            description,
-            category,
-            fitnessType,
-            address,
-            price,
-          } = res.data.product[0];
-
-          address = JSON.parse(address);
-          price = JSON.parse(price);
-          this.setState({
-            featuredImageView: featuredImageUrl,
-          });
-          this.setState({ featuredImageUrl });
-          this.setState({ name });
-          this.setState({ description });
-          this.setState({ category });
-          this.setState({ fitnessType });
-          this.setState({ address });
-          this.setState({ price });
-          this.setState({ isLoading: false });
-        }
+          if (res.status === 200) {
+            let {
+              _id,
+              featuredImageUrl,
+              name,
+              description,
+              category,
+              fitnessType,
+              address,
+              price,
+            } = res.data.product[0];
+            this.setState({ isLoading: false });
+            this.setState({
+              featuredImageView: featuredImageUrl,
+            });
+            this.setState({ featuredImageUrl });
+            this.setState({ name });
+            this.setState({ description });
+            this.setState({ category });
+            this.setState({ fitnessType });
+            this.setState({ address });
+            this.setState({ price });
+            this.setState({ _id });
+            this.setState({ Edit: true });
+          }
         })
         .then((err) => {});
     }
   }
   render() {
-    console.log(this.state);
     return (
       <Container>
         {this.state.isLoading ? (
@@ -212,7 +246,9 @@ class CreateProductDetails extends Component {
         ) : (
           <Form
             onSubmit={
-              !this.state.Edit ? this.submitHandler : this.updateHandeler
+              this.state.Edit === false
+                ? this.submitHandler
+                : this.updateHandeler
             }
           >
             <Form.Group controlId="formFile" className="mb-3">
@@ -472,7 +508,7 @@ class CreateProductDetails extends Component {
                 </Col>
               </Row>
             </Form.Group>
-            {!this.state.Edit ? (
+            {this.state.Edit === false ? (
               <Button type="submit" variant="info">
                 Publish
               </Button>

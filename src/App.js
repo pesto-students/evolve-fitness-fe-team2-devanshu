@@ -14,6 +14,7 @@ import PartnerWithUs from "./pages/PartnerWithUs";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Modal } from "react-bootstrap";
 import Login from "./components/Login";
+import PageNotFound from "./components/404";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -56,13 +57,13 @@ function App() {
           <Route
             path="/create-fitness-center/:id"
             element={
-              // <ProtectedRoute>
-                <CreateProductDetails />
-              // </ProtectedRoute>
+              <ProtectedRoute>
+              <CreateProductDetails />
+               </ProtectedRoute>
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
-
         <Footer />
       </BrowserRouter>
     </div>
