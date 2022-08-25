@@ -40,8 +40,9 @@
 .DashboardBlogcard_Title {
   font-size: 18px;
   font-weight: 600;
-  line-height: 30px;
+  line-height: 24px;
   color: var(--heading-text);
+  margin: 7px 0px;
 }
 .DashboardBlogcard_para {
   font-size: 14px;

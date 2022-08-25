@@ -14,16 +14,17 @@ const DashboardCollection = () => {
     getProductByCity(cityName)
       .then((res) => {
         setData(res.data.product);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [cityName]);
   return (
-    <DashboardSecton heading={"Collection"}>
-      {data.map((item) => (
-        <ProductsCard key={item._id} data={item} />
+    <DashboardSecton
+      heading={data.length > 0 ? `Fitness Center "${cityName}"` : ""}
+    >
+      {data.map((item, index) => (
+        <ProductsCard key={index} data={item} />
       ))}
     </DashboardSecton>
   );

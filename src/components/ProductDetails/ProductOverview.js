@@ -13,9 +13,12 @@ const ProductOverview = ({ description, address }) => {
       <Col lg={3} md={6}>
         <div className={classes.ProductOverviewCall}>
           <h4>Call</h4>
-          <p className={classes.ProductOverviewCallNumber}>
-            {address.phoneNumber || null}
-          </p>
+          <a href={`tel:${address.phoneNumber}`} className="text-white">
+            <p className={classes.ProductOverviewCallNumber}>
+              {address.phoneNumber || null}
+            </p>
+          </a>
+
           <h4>Direction</h4>
           <div
             className={classes.ProductOverviewMap}

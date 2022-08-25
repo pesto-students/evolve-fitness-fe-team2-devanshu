@@ -25,7 +25,7 @@ const ProductsDetails = () => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{ marginTop: "30px" }}>
       <Breadcrumb>
         <Breadcrumb.Item onClick={() => navigate("/")}>Home</Breadcrumb.Item>
         <Breadcrumb.Item

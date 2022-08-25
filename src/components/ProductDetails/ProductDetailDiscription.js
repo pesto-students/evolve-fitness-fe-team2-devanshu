@@ -19,7 +19,7 @@ const ProductDetailDiscription = ({ name, address, comments }) => {
       <Row>
         <Col lg={7}>
           <h1>{name}</h1>
-          <p>{`${address.city}, ${address.area}, ${address.state}, ${address.country}`}</p>
+          <p style={{width:"50%"}}>{`${address.completeAddress}`}</p>
         </Col>
         <Col className={classes.ProductDetailDiscriptionAverage} lg={4}>
           <h4>Average Rating</h4>

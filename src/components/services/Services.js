@@ -37,7 +37,6 @@ const Services = (props) => {
       type: "martialart",
     },
   ];
-  console.log("data", Data);
   return (
     <DashboardSecton heading={"Our Services"}>
       {Data.map((item) => (

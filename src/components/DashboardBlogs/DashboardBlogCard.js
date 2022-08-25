@@ -16,7 +16,7 @@ const DashboardBlogCard = (props) => {
 
         <div className={classes.DashboardBlogcard_Discription}>
           <div className={classes.DashboardBlogcard_PubliceDate}>
-            {"DEC. 20, 2020"}
+            {props.data.pubDate}
           </div>
           <div className={classes.DashboardBlogcard_Title}>
             {props.data.heading}

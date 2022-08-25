@@ -41,6 +41,11 @@ const ProductRating = ({ name, comments }) => {
       text: text,
       stars: rating,
       userName: UserName,
+      pubDate: new Date().toLocaleString("en-us", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }),
       userId: UserId,
     };
     if (text !== "") {
@@ -64,9 +69,7 @@ const ProductRating = ({ name, comments }) => {
     <Row>
       {isAnonymous ? (
         <Col lg={12} md={12}>
-          <h4
-            style={{ textTransform: "capitalize" }}
-          >{`${name} Fitness center Reviews`}</h4>
+          <h4 style={{ textTransform: "capitalize" }}>{`${name} Reviews`}</h4>
 
           <div className="row ">
             <div className="col-md-12 col-lg-12">
@@ -121,9 +124,7 @@ const ProductRating = ({ name, comments }) => {
         </Col>
       ) : (
         <Col lg={12} md={12}>
-          <h4
-            style={{ textTransform: "capitalize" }}
-          >{`${name} Fitness center Reviews`}</h4>
+          <h4 style={{ textTransform: "capitalize" }}>{`${name} Reviews`}</h4>
 
           <div className="row ">
             <div className="col-md-12 col-lg-12">
@@ -252,7 +253,9 @@ const ProductRating = ({ name, comments }) => {
               </div>
             </div>
           </div>
-          <ProductDetailComment comments={commentsData} />
+          <div className={classes.CommentsSection}>
+            <ProductDetailComment comments={commentsData} />
+          </div>
         </Col>
       )}
     </Row>

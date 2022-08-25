@@ -1,8 +1,9 @@
 import Avatar from "react-avatar";
+import moment from "moment";
 
 const ProductDetailComment = ({ comments }) => {
   return (
-    <div className="container my-5">
+    <div className="container my-5" >
       {[...comments].reverse().map((item, index) => (
         <div className="row " key={index}>
           <div className="col-md-12 col-lg-12">
@@ -29,11 +30,13 @@ const ProductDetailComment = ({ comments }) => {
                   <div className="d-flex align-items-center mb-3">
                     <p className="mb-1">
                       {item.pubDate
-                        ? item.pubDate.toLocaleString("en-us", {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })
+                        ? moment(item.pubDate)
+                            .toDate()
+                            .toLocaleString("en-us", {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            })
                         : ""}
                       <span
                         className="badge bg-success"

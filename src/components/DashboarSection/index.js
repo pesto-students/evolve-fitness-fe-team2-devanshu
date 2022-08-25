@@ -8,9 +8,9 @@ function DashboardSecton(props) {
       <div
         style={{
           fontSize: "30px",
-          // color: var(--heading-text),
-          marginBottom: "25px",
+          marginBottom: "5px",
           fontWeight: 500,
+          textTransform: "capitalize",
         }}
       >
         {props.heading}
