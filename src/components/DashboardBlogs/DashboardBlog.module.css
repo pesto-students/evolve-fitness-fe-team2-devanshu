@@ -1,5 +1,5 @@
 .DashboardBlogcard_wraapper {
-  margin: 12px 0px 24px 0px;
+  margin: 12px auto;
   padding: 10px;
   border-radius: 10px;
   background-color: var(--primary-bg);

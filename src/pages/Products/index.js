@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
 import ProductsCard from "../../components/Products/ProductsCard";
-import {
-  Container,
-  Row,
-  Col,
-  DropdownButton,
-  Dropdown,
-  Form,
-} from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import Banner from "../../components/Banner.js";
 import { getProductByFitnessType } from "../../services/cmsService";
 import { useParams } from "react-router-dom";
+import Loader from "../../components/Loader";
 
 const Products = () => {
   let { id, city } = useParams();
   let [productData, setProductData] = useState([]);
+  let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true);
     getProductByFitnessType(id, city)
       .then((res) => {
         setProductData(res.data.product);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, [id]);
 
@@ -68,8 +66,10 @@ const Products = () => {
 
       <Container>
         <Row lg={2} md={2}>
-          {productData.length > 0 ? (
-            productData.map((item, index) => (
+          {isLoading ? (
+            <Loader />
+          ) : productData.length > 0 ? (
+            productData.map((item) => (
               <Col lg={6} key={item._id}>
                 <ProductsCard data={item} />
               </Col>

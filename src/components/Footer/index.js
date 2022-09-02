@@ -1,7 +1,6 @@
 import React from "react";
 import classNamees from "./footer.module.css";
 import { Link } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
 import Logo from "../../assests/headerIcons/Logo.png";
 import { selectCity } from "../../Redux/features/UserSlice";
 import { useSelector } from "react-redux/es/exports";
@@ -29,6 +28,7 @@ function Footer() {
                     className="text-white px-2"
                     href="https://www.facebook.com/"
                     target={"_blank"}
+                    rel="noreferrer"
                   >
                     <i className="fab fa-facebook-square"></i>
                   </a>
@@ -38,6 +38,7 @@ function Footer() {
                     href="https://www.instagram.com/"
                     target={"_blank"}
                     className="text-white"
+                    rel="noreferrer"
                   >
                     <i className="fab fa-instagram"></i>
                   </a>
@@ -47,6 +48,7 @@ function Footer() {
                     className="text-white ps-2"
                     href="https://www.youtube.com/"
                     target={"_blank"}
+                    rel="noreferrer"
                   >
                     <i className="fab fa-youtube"></i>
                   </a>

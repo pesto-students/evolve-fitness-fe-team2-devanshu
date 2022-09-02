@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import classes from "./header.module.css";
 import Search from "./Search";
 import UserLogin from "../../assests/headerIcons/user.png";
 import Logo from "../../assests/headerIcons/Logo.png";
-import BlackLogo from "../../assests/headerIcons/BlackLogo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 
 //  User Slice
@@ -24,19 +23,10 @@ import { auth } from "../../Firebase/firebase.config";
 import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
-  let location = useLocation();
   let dispatch = useDispatch();
   let userImage = useSelector(selectUserImage);
-
-  const [displayHeader, setDisplayHeader] = useState(false);
   const CreateAnonymousUser = () => {
-    signInAnonymously(auth)
-      .then((res) => {})
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ...
-      });
+    signInAnonymously(auth);
   };
   useEffect(() => {
     // setDisplayHeader(true);

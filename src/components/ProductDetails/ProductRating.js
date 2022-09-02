@@ -30,7 +30,7 @@ const ProductRating = ({ name, comments }) => {
   const [text, setText] = useState("");
   const [commentsData, setCommentsData] = useState([]);
 
-  const HandelCencel = () => {
+  const HandelCancle = () => {
     setRating(0);
     setText("");
   };
@@ -239,13 +239,13 @@ const ProductRating = ({ name, comments }) => {
                     </Form.Group>
                     <div style={{ display: "flex", justifyContent: "end" }}>
                       <Button
-                        onClick={() => HandelCencel()}
+                        onClick={() => HandelCancle()}
                         className={classes.CencleBtn}
                       >
-                        Cencel
+                        Cancle
                       </Button>
                       <Button type="submit" className={classes.SubmitBtn}>
-                        submit
+                        Submit
                       </Button>
                     </div>
                   </Form>

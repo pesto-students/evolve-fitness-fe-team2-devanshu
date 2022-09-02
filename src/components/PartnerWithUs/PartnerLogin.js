@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  signOut,
   onAuthStateChanged,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../Firebase/firebase.config";
-import { Modal, Container } from "react-bootstrap";
-import { setModel, ModelState } from "../../Redux/features/HeaderSlice";
+import { Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  CreateUser,
-  GetAdminUser,
-  GetProductByOwnerId,
-} from "../../services/admiService";
+import { CreateUser, GetProductByOwnerId } from "../../services/admiService";
 import {
   setAdmin,
   selectUserId,
@@ -31,7 +25,6 @@ const PartnerLogin = () => {
 
   // Partner Googele sign in
   const googleSignIn = async () => {
-    console.log("cfede", CheckAdmin);
     if ((!CheckAdmin && CheckAdmin === null) || CheckAdmin === undefined) {
       const provider = new GoogleAuthProvider();
       const anonymousUser = auth.currentUser;
@@ -54,7 +47,9 @@ const PartnerLogin = () => {
               );
               return navigate("/create-fitness-center");
             })
-            .catch((err) => {});
+            .catch((err) => {
+              console.log(err);
+            });
         })
         .catch((error) => {
           // Handle Errors here.
@@ -109,7 +104,6 @@ const PartnerLogin = () => {
             })
             .catch((err) => {});
         }
-      } else {
       }
     });
   }, []);

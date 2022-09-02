@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./ProductOverview.module.css";
-import DirectionIcon from "../../assests/ProducDetials/Direction.svg";
 import { Row, Col } from "react-bootstrap";
 
 const ProductOverview = ({ description, address }) => {

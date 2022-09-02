@@ -33,7 +33,7 @@ const Search = () => {
           Bhopal
         </option>
         <option value={"delhi"}>{"Delhi"}</option>
-        <option value={"banglore"}>{"Banglore"}</option>
+        <option value={"bangalore"}>{"Bangalore"}</option>
       </Form.Control>
     </div>
   );

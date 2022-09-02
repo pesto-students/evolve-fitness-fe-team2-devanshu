@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductsCard from "./ProductsCard";
 import DashboardSecton from "../DashboarSection";
-import { Container } from "react-bootstrap";
 import { getProductByCity } from "../../services/cmsService";
 import { useSelector } from "react-redux";
 import { selectCity } from "../../Redux/features/UserSlice";

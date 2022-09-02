@@ -9,9 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
-    "eslint": "^8.21.0",
     "firebase": "^9.9.2",
-    "i": "^0.3.7",
     "moment": "^2.29.4",
     "npm": "^8.16.0",
     "react": "^18.2.0",
@@ -30,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-plugin-react": "^7.31.1"
   }
 }

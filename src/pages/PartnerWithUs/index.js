@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "../../components/Banner.js";
 import DisplayCard from "../../components/PartnerWithUs/DisplayCard.js";
-import StrongImg from "../../assests/PartnerWithus/strong.png";
 import EarthImg from "../../assests/PartnerWithus/earth.png";
 import PeopleImg from "../../assests/PartnerWithus/people.png";
 import StepCard from "../../components/PartnerWithUs/StepCard.js";

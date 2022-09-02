@@ -62,21 +62,15 @@ const DashboardBlog = () => {
         </div>
       </div>
       <Container>
-        <Row
-          lg={2}
-          md={2}
-          // style={{
-          //   display: "flex",
-          //   flexWrap: "wrap",
-          //   justifyContent: "space-around",
-          // }}
-        >
+        {/* <div style={{ width: "100%", margin: "0px auto" }}> */}
+        <Row lg={2} md={2}>
           {Data.map((item) => (
             <Col key={item.id}>
               <DashboardBlogCard key={item.id} data={item} />
             </Col>
           ))}
         </Row>
+        {/* </div> */}
       </Container>
     </Container>
   );

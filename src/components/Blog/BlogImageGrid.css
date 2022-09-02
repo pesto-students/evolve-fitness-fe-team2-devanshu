@@ -1,22 +1,6 @@
 .Wrapper {
   position: relative;
   overflow: hidden;
-  /* margin-bottom: 20px; */
-  /* border-radius: 15px; */
-}
-.zoom {
-  /* padding: 50px;
-  background-color: green; */
-  transition: transform 0.2s; /* Animation */
-  /* width: 200px;
-  height: 200px;
-  margin: 0 auto; */
-}
-
-.zoom:hover {
-  transform: scale(
-    1.2
-  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 .text-block {
   position: absolute;
@@ -39,4 +23,46 @@
   );
   pointer-events: none;
   transition: transform 0.2s;
+}
+
+/* test css */
+
+.gallery {
+  -webkit-column-count: 3;
+  --moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+  column-width: 33%;
+  padding: 0 16px;
+}
+.gallery .pics {
+  -webkit-transition: all 350ms ease;
+  transition: all 350ms ease;
+  cursor: pointer;
+  /* margin-bottom: 8px; */
+}
+.gallery .pics:hover {
+  filter: opacity(0.7);
+}
+
+@media (max-width: 991px) {
+  .gallery {
+    -webkit-column-count: 2;
+    --moz-column-count: 2;
+    column-count: 2;
+    /* -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%; */
+  }
+}
+@media (max-width: 480px) {
+  .gallery {
+    -webkit-column-count: 1;
+    --moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+  }
 }

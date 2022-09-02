@@ -1,12 +1,8 @@
 import React from "react";
 import classes from "./Banner.module.css";
-import Logo from "../../assests/headerIcons/Logo.png";
-import BlackLogo from "../../assests/headerIcons/BlackLogo.png";
-import UserLogin from "../../assests/headerIcons/user.png";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function Banner({ ImageUrl, name }) {
-  let location = useLocation();
+function Banner({ ImageUrl }) {
   let { id } = useParams();
 
   return (

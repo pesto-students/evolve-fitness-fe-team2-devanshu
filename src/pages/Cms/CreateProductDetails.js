@@ -1,6 +1,5 @@
-import React, { useEffect, useState, Component } from "react";
-import { Form, Col, Button, Figure, Container, Row } from "react-bootstrap";
-import axios from "axios";
+import React, { Component } from "react";
+import { Form, Col, Button, Container, Row } from "react-bootstrap";
 import ProdctImageCard from "../../components/ProductDetails/ProdctImageCard";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -11,7 +10,6 @@ import Loader from "../../components/Loader";
 import { connect } from "react-redux";
 import withNavigateHook from "../../components/withNavigateHook";
 import { toast } from "react-toastify";
-import auth from "../../services/authentication";
 
 class CreateProductDetails extends Component {
   state = {
@@ -236,7 +234,7 @@ class CreateProductDetails extends Component {
             this.setState({ Edit: true });
           }
         })
-        .then((err) => {});
+        .then((err) => {console.log(err)});
     }
   }
   render() {
@@ -281,6 +279,7 @@ class CreateProductDetails extends Component {
                 name="name"
                 value={this.state.name}
                 onChange={this.OnchangeHandler}
+                required={true}
               />
             </Form.Group>
             {/*  Description Filed */}
@@ -295,6 +294,7 @@ class CreateProductDetails extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.OnchangeHandler}
+                required={true}
               />
             </Form.Group>
 
@@ -302,12 +302,12 @@ class CreateProductDetails extends Component {
             <Container style={{ marginTop: "54px" }}>
               <Form.Group>
                 <Row xs={"auto"} md={2} lg={5}>
-                  {Object.keys(this.state.price).map((key, index) => (
-                    <Col className={classes.priceCard}>
+                  {Object.keys(this.state.price).map((key) => (
+                    <Col className={classes.priceCard} key={key}>
                       <div className={classes.priceCardName}>
                         <h4
                           style={{ textTransform: "uppercase" }}
-                        >{`${key} Card`}</h4>
+                        >{`${key}Card`}</h4>
                       </div>
 
                       <Col>
@@ -555,20 +555,20 @@ class CreateProductDetails extends Component {
               }}
             >
               <div>
-              {this.state.Edit === false ? (
-                <>
-                  {" "}
-                  <Button type="submit" className={classes.SubmitBtn}>
-                    Publish
-                  </Button>
-                </>
-              ) : (
-                <Col>
-                  <Button type="submit" className={classes.SubmitBtn}>
-                    update
-                  </Button>
-                </Col>
-              )}
+                {this.state.Edit === false ? (
+                  <>
+                    {" "}
+                    <Button type="submit" className={classes.SubmitBtn}>
+                      Publish
+                    </Button>
+                  </>
+                ) : (
+                  <Col>
+                    <Button type="submit" className={classes.SubmitBtn}>
+                      update
+                    </Button>
+                  </Col>
+                )}
               </div>
             </div>
           </Form>
