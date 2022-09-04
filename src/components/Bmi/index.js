@@ -95,7 +95,7 @@ const Bmi = () => {
             <Row className="mb-3">
               <Col>
                 <button className={classes.BmiComputeBtn} type="submit">
-                  Compute Bmi
+                  Compute BMI
                 </button>
               </Col>
               <Col>
@@ -153,7 +153,7 @@ const Bmi = () => {
             <Row className="mb-3">
               <Col>
                 <button className={classes.BmiComputeBtn} type="submit">
-                  Compute Bmi
+                  Compute BMI
                 </button>
               </Col>
               <Col>

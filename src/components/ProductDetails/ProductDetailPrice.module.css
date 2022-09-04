@@ -46,4 +46,10 @@
 }
 .PrudctDetailPriceDisc {
   padding: 15px;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 500;
+}
+.CardContantTitle {
+  text-align: left;
 }

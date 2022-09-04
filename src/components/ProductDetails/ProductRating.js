@@ -242,7 +242,7 @@ const ProductRating = ({ name, comments }) => {
                         onClick={() => HandelCancle()}
                         className={classes.CencleBtn}
                       >
-                        Cancle
+                        Cancel
                       </Button>
                       <Button type="submit" className={classes.SubmitBtn}>
                         Submit

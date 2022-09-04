@@ -24,9 +24,22 @@ function ProductDetailPrice({ price }) {
       >
         <h4>{key}</h4>
         <div className={classes.PrudctDetailPriceDisc}>
-          <div> {`Duration  -${price[key].duration}`}</div>
-          <div> {`Price  - ₹ ${price[key].price} /-`}</div>
-          <div> {`Personal Trainer  - ₹ ${price[key].personalTrainer} /-`}</div>
+          <div className={classes.CardContantTitle}>
+            <div> {`Duration`}</div>
+            <div> {`Price`}</div>
+            <div>{`Personal Trainer`}</div>
+          </div>
+          <div>
+            <div>{"-"}</div>
+            <div>{"-"}</div>
+            <div>{"-"}</div>
+          </div>
+
+          <div>
+            <div>{`  ${price[key].duration}`}</div>
+            <div>{` ₹ ${price[key].price} /-`}</div>
+            <div>{` ₹ ${price[key].personalTrainer} /-`}</div>
+          </div>
         </div>
       </div>
     </Col>
