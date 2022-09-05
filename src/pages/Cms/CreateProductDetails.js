@@ -150,6 +150,7 @@ class CreateProductDetails extends Component {
 
     CreateProduct(formData, this.props.userId)
       .then((res) => {
+        this.setState({ Edit: true });
         toast.success(`${res.data.name} created sucessfully`);
         this.setState({ isLoading: false });
         this.props.navigation(`/create-fitness-center/${this.props.userId}`);
@@ -234,7 +235,9 @@ class CreateProductDetails extends Component {
             this.setState({ Edit: true });
           }
         })
-        .then((err) => {console.log(err)});
+        .then((err) => {
+          console.log(err);
+        });
     }
   }
   render() {

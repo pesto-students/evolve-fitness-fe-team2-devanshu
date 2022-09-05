@@ -49,9 +49,9 @@ function App() {
             <Route
               path="/create-fitness-center"
               element={
-                // <ProtectedRoute>
+                <ProtectedRoute>
                   <CreateProductDetails />
-                // </ProtectedRoute>
+                </ProtectedRoute>
               }
             />
             <Route

@@ -22,6 +22,7 @@ const ProductsCard = (props) => {
             <img
               src={props.data.featuredImageUrl[0]}
               alt={props.data.name}
+              loading="lazy"
               // style={{ width: "100%", height: "250px", objectFit: "cover" }}
             />
           </div>

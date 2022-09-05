@@ -10,12 +10,15 @@ const Products = () => {
   let { id, city } = useParams();
   let [productData, setProductData] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
+  let [isActive, setIsActive] = useState(false);
   useEffect(() => {
     setIsLoading(true);
     getProductByFitnessType(id, city)
       .then((res) => {
         setProductData(res.data.product);
         setIsLoading(false);
+        FilterRating(false);
+        setIsActive(true);
       })
       .catch((err) => {
         console.log(err);
@@ -23,11 +26,20 @@ const Products = () => {
       });
   }, [id]);
 
-  const FilterGender = () => {
-    let data = productData.filter((item) => item.category === "female");
-    console.log("data", data);
+  const FilterRating = (value) => {
+    setIsActive(!isActive);
+    if (value) {
+      let data = productData.sort(
+        (a, b) => Number(b.price.gold.price) - Number(a.price.gold.price)
+      );
+      console.log(data[0].price.gold.price);
+    } else {
+      let data = productData.sort(
+        (a, b) => Number(a.price.gold.price) - Number(b.price.gold.price)
+      );
+      console.log(data[0].price.gold.price);
+    }
   };
-  console.log(FilterGender());
   return (
     <div>
       <Banner
@@ -42,25 +54,30 @@ const Products = () => {
           display: "flex",
           justifyContent: "space-between",
           padding: "12px",
+          alignItems: "center",
         }}
       >
         <div
-          style={{ textTransform: "capitalize" }}
-        >{`Fitness Center  "${city}"`}</div>
-        <div style={{ width: "100px" }}>
-          <Form.Control
-            as="select"
-            name="language"
-            value={""}
-            onChange={() => {}}
+          style={{ textTransform: "capitalize", fontWeight: "500" }}
+        >{`${id} Center  "${city}"`}</div>
+        <div>
+          <div
+            style={{
+              backgroundColor: isActive ? "#f21137" : "black",
+              color: "white",
+              padding: "8px 20px",
+              borderRadius: "5px",
+              width: "100%",
+              cursor: "pointer",
+            }}
+            onClick={() => FilterRating(isActive)}
           >
-            <option defaultValue value="">
-              Filter
-            </option>
-            <option value={"female"}>{"female"}</option>
-            <option value={"male"}>{"male"}</option>
-            <option value={"unisex"}>{"unisex"}</option>
-          </Form.Control>
+            {isActive ? (
+              <i className="fa-solid fa-arrow-up-1-9"></i>
+            ) : (
+              <i className="fa-solid fa-arrow-up-9-1"></i>
+            )}
+          </div>
         </div>
       </div>
 
