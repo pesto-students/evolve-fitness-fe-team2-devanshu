@@ -1,6 +1,6 @@
 import axios from "axios";
 import auth from "./authentication";
-const baseURL = "http://localhost:8000/api";
+const baseURL = "https://evolvefitness.herokuapp.com/api";
 
 const CreateProduct = (data, id) => {
   return axios.post(`${baseURL}/product/create/${id}`, data, { auth: auth });
