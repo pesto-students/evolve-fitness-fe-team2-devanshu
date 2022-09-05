@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "../../components/Banner.js";
 import DisplayCard from "../../components/PartnerWithUs/DisplayCard.js";
-import StrongImg from "../../assests/PartnerWithus/strong.png";
 import EarthImg from "../../assests/PartnerWithus/earth.png";
 import PeopleImg from "../../assests/PartnerWithus/people.png";
 import StepCard from "../../components/PartnerWithUs/StepCard.js";
@@ -41,7 +40,7 @@ const PartnerWithUs = () => {
     <div>
       <Banner
         ImageUrl={
-          "https://images.unsplash.com/photo-1506197061617-7f5c0b093236?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=818&q=80"
+          "https://images.unsplash.com/photo-1434682772747-f16d3ea162c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80"
         }
       />
       <PartnerLogin />

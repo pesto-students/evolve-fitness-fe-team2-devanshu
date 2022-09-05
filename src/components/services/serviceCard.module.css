@@ -1,5 +1,5 @@
 .Servicescard_wraapper {
-  margin: 12px 12px 24px 12px;
+  margin: 12px 20px;
   padding: 10px;
   border-radius: 15px;
   background-color: var(--primary-bg);
@@ -12,9 +12,10 @@
 }
 .Servicescard_Imagewraapper {
   height: 220px;
-  width: 250px;
-  min-width: 150px;
-  max-width: 250px;
+  width: 300px;
+  min-width: 200px;
+  max-width: 350px;
+  margin: 0px auto;
   border-radius: 15px;
   position: relative;
 }

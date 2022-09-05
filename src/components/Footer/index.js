@@ -1,10 +1,12 @@
 import React from "react";
 import classNamees from "./footer.module.css";
 import { Link } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
 import Logo from "../../assests/headerIcons/Logo.png";
+import { selectCity } from "../../Redux/features/UserSlice";
+import { useSelector } from "react-redux/es/exports";
 
 function Footer() {
+  let city = useSelector(selectCity);
   return (
     <div className={classNamees.FooterContainer}>
       <footer className="text-center text-lg-start text-white">
@@ -22,19 +24,34 @@ function Footer() {
 
               <ul className="list-unstyled d-flex flex-row justify-content-center">
                 <li>
-                  <Link className="text-white px-2" to="/">
+                  <a
+                    className="text-white px-2"
+                    href="https://www.facebook.com/"
+                    target={"_blank"}
+                    rel="noreferrer"
+                  >
                     <i className="fab fa-facebook-square"></i>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="text-white px-2" to="/">
+                  <a
+                    href="https://www.instagram.com/"
+                    target={"_blank"}
+                    className="text-white"
+                    rel="noreferrer"
+                  >
                     <i className="fab fa-instagram"></i>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="text-white ps-2" to="/">
+                  <a
+                    className="text-white ps-2"
+                    href="https://www.youtube.com/"
+                    target={"_blank"}
+                    rel="noreferrer"
+                  >
                     <i className="fab fa-youtube"></i>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -54,23 +71,32 @@ function Footer() {
                   </Link>
                 </li>
                 <li className="mb-2">
-                  <Link to={`/Fitness-center/gym`} className="text-white">
+                  <Link
+                    to={`/Fitness-center/${city}/gym`}
+                    className="text-white"
+                  >
                     Gym Center
                   </Link>
                 </li>
                 <li className="mb-2">
-                  <Link to={`/Fitness-center/yoga`} className="text-white">
+                  <Link
+                    to={`/Fitness-center/${city}/yoga`}
+                    className="text-white"
+                  >
                     Yoga Center
                   </Link>
                 </li>
                 <li className="mb-2">
-                  <Link to={`/Fitness-center/zumba`} className="text-white">
+                  <Link
+                    to={`/Fitness-center/${city}/zumba`}
+                    className="text-white"
+                  >
                     zumba Center
                   </Link>
                 </li>
                 <li className="mb-2">
                   <Link
-                    to={`/Fitness-center/martialart`}
+                    to={`/Fitness-center/${city}/martialart`}
                     className="text-white"
                   >
                     Martial Art Center
@@ -88,11 +114,11 @@ function Footer() {
                     partner-with-us
                   </Link>
                 </li>
-                <li className="mb-2">
+                {/* <li className="mb-2">
                   <Link to="/contact-us" className="text-white">
                     contact us
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
 
@@ -107,15 +133,20 @@ function Footer() {
                   </p>
                 </li>
                 <li>
-                  <p>
-                    <i className="fas fa-phone pe-2"></i>+ 01 234 567 89
-                  </p>
+                  <a href="tel:+91 882-783-1093" className="text-white">
+                    <p>
+                      <i className="fas fa-phone pe-2"></i>
+                      +91 882-783-1093
+                    </p>
+                  </a>
                 </li>
                 <li>
-                  <p>
-                    <i className="fas fa-envelope pe-2 mb-0"></i>
-                    contact@example.com
-                  </p>
+                  <a href="mailto:contact@example.com" className="text-white">
+                    <p>
+                      <i className="fas fa-envelope pe-2 mb-0"></i>
+                      contact@example.com
+                    </p>
+                  </a>
                 </li>
               </ul>
             </div>

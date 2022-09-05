@@ -5,16 +5,16 @@ import classes from "./DashboarSection.module.css";
 function DashboardSecton(props) {
   return (
     <Container fluid>
-      <div
+      <h2
         style={{
-          fontSize: "30px",
-          // color: var(--heading-text),
-          marginBottom: "25px",
+          fontSize: "25px",
+          margin: "8px 0px",
           fontWeight: 500,
+          textTransform: "capitalize",
         }}
       >
         {props.heading}
-      </div>
+      </h2>
       <div className={classes.DashboardSectionWrapper}>{props.children}</div>
     </Container>
   );

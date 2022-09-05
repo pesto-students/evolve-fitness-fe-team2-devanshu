@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  signOut,
-  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.config";
 import { Modal, Container } from "react-bootstrap";
 import { setModel, ModelState } from "../../Redux/features/HeaderSlice";
 import { useSelector, useDispatch } from "react-redux";
+import GoogleImg from "../../assests/Login/Google.svg";
+import classes from "./Login.module.css";
+import LogoBlack from "../../assests/headerIcons/BlackLogo.png";
 
 const Login = () => {
   let dispatch = useDispatch();
@@ -28,7 +28,6 @@ const Login = () => {
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         let credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
         dispatch(
           setModel({
             Model: false,
@@ -37,29 +36,25 @@ const Login = () => {
         return;
       })
       .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+      console.log(error)
       });
   };
   return (
     <Container>
       <Modal size="x" show={ModelShow.Model} onHide={() => HideModel()}>
-        <Modal.Header closeButton>
-          <Modal.Title></Modal.Title>
-        </Modal.Header>
         <Modal.Body>
-          {/* <Login
-            user={this.state.isSignedIn}
-            isUserAnonymous={this.isUserAnonymous}
-            toggleLoginPrompt={this.toggleLoginPrompt}
-          /> */}
-          <h1 onClick={() => googleSignIn()}>Test Model</h1>
+          <div style={{ textAlign: "center" }}>
+            <img src={LogoBlack} width={150} alt="logo" />
+          </div>
+          <div
+            className={classes.LoginContainer}
+            onClick={() => googleSignIn()}
+          >
+            <span>
+              <img src={GoogleImg} alt={"google"} width={15} />
+            </span>
+            <span>Sign in with Google</span>
+          </div>
         </Modal.Body>
       </Modal>
     </Container>

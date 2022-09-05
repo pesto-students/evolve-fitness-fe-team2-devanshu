@@ -1,9 +1,19 @@
 import React from "react";
 import classes from "./ProductsCard.module.css";
-import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function ProductsCard(props) {
+const ProductsCard = (props) => {
+  const Average = () => {
+    var sum = 0;
+    if (props.data.reviews.length > 0) {
+      props.data.reviews.forEach(function (num) {
+        sum += num.stars;
+      });
+      let average = sum / props.data.reviews.length;
+
+      return average.toFixed(1);
+    }
+  };
   return (
     <>
       <Link to={`/Fitness-Center-Details/${props.data._id}`}>
@@ -12,6 +22,7 @@ function ProductsCard(props) {
             <img
               src={props.data.featuredImageUrl[0]}
               alt={props.data.name}
+              loading="lazy"
               // style={{ width: "100%", height: "250px", objectFit: "cover" }}
             />
           </div>
@@ -22,9 +33,9 @@ function ProductsCard(props) {
               <div className={classes.Productscard_Rating}>
                 <span
                   className={
-                    props.data.rating >= 1
+                    Average() >= 1
                       ? "fa fa-star"
-                      : props.data.rating >= 0.5
+                      : Average() >= 0.5
                       ? "fa fa-star-half-o"
                       : "fa fa-star-o"
                   }
@@ -32,9 +43,9 @@ function ProductsCard(props) {
 
                 <span
                   className={
-                    props.data.rating >= 2
+                    Average() >= 2
                       ? "fa fa-star"
-                      : props.data.rating >= 1.5
+                      : Average() >= 1.5
                       ? "fa fa-star-half-o"
                       : "fa fa-star-o"
                   }
@@ -42,9 +53,9 @@ function ProductsCard(props) {
 
                 <span
                   className={
-                    props.data.rating >= 3
+                    Average() >= 3
                       ? "fa fa-star"
-                      : props.data.rating >= 2.5
+                      : Average() >= 2.5
                       ? "fa fa-star-half-o"
                       : "fa fa-star-o"
                   }
@@ -52,9 +63,9 @@ function ProductsCard(props) {
 
                 <span
                   className={
-                    "classes.checked" + props.data.rating >= 4
+                    Average() >= 4
                       ? "fa fa-star"
-                      : props.data.rating >= 3.5
+                      : Average() >= 3.5
                       ? "fa fa-star-half-o"
                       : "fa fa-star-o"
                   }
@@ -62,35 +73,33 @@ function ProductsCard(props) {
 
                 <span
                   className={
-                    props.data.rating >= 5
+                    Average() >= 5
                       ? "fa fa-star classes.checked"
-                      : props.data.rating >= 4.5
+                      : Average() >= 4.5
                       ? "fa fa-star-half-o classes.checked"
                       : "fa fa-star-o "
                   }
                 ></span>
               </div>
-
+              {/* 
               <div className={classes.Productscard_Rating_Number}>
-                <div>{4.5}</div>
+                <div>{Average()}</div>
                 <div style={{ marginLeft: "2px" }}>
                   <span
                     class="fa-regular fa-star"
                     style={{ fontSize: "12px" }}
                   ></span>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <p className={classes.Productscard_para}>{`${
-             props.data.address.city
-            },${props.data.address.area},${
-              props.data.address.state
-            },${props.data.address.country}`}</p>
+            <p
+              className={classes.Productscard_para}
+            >{`${props.data.address.completeAddress}`}</p>
           </div>
         </div>
       </Link>
     </>
   );
-}
+};
 
 export default ProductsCard;

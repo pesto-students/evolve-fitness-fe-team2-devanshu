@@ -1,63 +1,45 @@
 import React, { useEffect, useState } from "react";
 import ProductsCard from "../../components/Products/ProductsCard";
-import {
-  Container,
-  Row,
-  Col,
-  DropdownButton,
-  Dropdown,
-  Form,
-} from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import Banner from "../../components/Banner.js";
 import { getProductByFitnessType } from "../../services/cmsService";
 import { useParams } from "react-router-dom";
+import Loader from "../../components/Loader";
 
 const Products = () => {
-  let { id } = useParams();
+  let { id, city } = useParams();
   let [productData, setProductData] = useState([]);
+  let [isLoading, setIsLoading] = useState(false);
+  let [isActive, setIsActive] = useState(false);
   useEffect(() => {
-    getProductByFitnessType(id)
+    setIsLoading(true);
+    getProductByFitnessType(id, city)
       .then((res) => {
         setProductData(res.data.product);
+        setIsLoading(false);
+        FilterRating(false);
+        setIsActive(true);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, [id]);
-  let Data = [
-    {
-      Image:
-        "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      id: "1",
-      heading: "Gym Center Near You",
-      para: "Plot no. 124, Star Avenue, 1st Floor, Above Canara Bank, BDA Road, BHEL, Awadhpuri, Bhopal, Madhya Pradesh 462021",
-      rating: 4.5,
-    },
-    {
-      Image:
-        "https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      id: "2",
-      heading: "Yoga Center Near You",
-      para: "Plot no. 124, Star Avenue, 1st Floor, Above Canara Bank, BDA Road, BHEL, Awadhpuri, Bhopal, Madhya Pradesh 462021",
-      rating: 4.1,
-    },
-    {
-      Image:
-        "https://images.unsplash.com/photo-1527933053326-89d1746b76b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      id: "3",
-      heading: "Zumba Center Near You",
-      para: "Explore The City Top Zumba Center",
-      rating: 1.5,
-    },
-    {
-      Image:
-        "https://images.unsplash.com/photo-1599677099934-d3c4e07056d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-      id: "4",
-      heading: "Martial Art Center Near You",
-      para: "Plot no. 124, Star Avenue, 1st Floor, Above Canara Bank, BDA Road, BHEL, Awadhpuri, Bhopal, Madhya Pradesh 462021",
-      rating: 4.5,
-    },
-  ];
+
+  const FilterRating = (value) => {
+    setIsActive(!isActive);
+    if (value) {
+      let data = productData.sort(
+        (a, b) => Number(b.price.gold.price) - Number(a.price.gold.price)
+      );
+      console.log(data[0].price.gold.price);
+    } else {
+      let data = productData.sort(
+        (a, b) => Number(a.price.gold.price) - Number(b.price.gold.price)
+      );
+      console.log(data[0].price.gold.price);
+    }
+  };
   return (
     <div>
       <Banner
@@ -66,32 +48,47 @@ const Products = () => {
         }
       />
 
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>{"Fitness Center near “Bhopal “"}</div>
-        <div style={{ width: "100px" }}>
-          <Form.Control
-            as="Select"
-            name="language"
-            value={""}
-            onChange={() => {}}
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "12px",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{ textTransform: "capitalize", fontWeight: "500" }}
+        >{`${id} Center  "${city}"`}</div>
+        <div>
+          <div
+            style={{
+              backgroundColor: isActive ? "#f21137" : "black",
+              color: "white",
+              padding: "8px 20px",
+              borderRadius: "5px",
+              width: "100%",
+              cursor: "pointer",
+            }}
+            onClick={() => FilterRating(isActive)}
           >
-            <option defaultValue value="">
-              Filter
-            </option>
-            <option value={"price"}>{"price"}</option>
-            <option value={"price"}>{"price"}</option>
-            <option value={"price"}>{"price"}</option>{" "}
-            <option value={"price"}>{"price"}</option>
-          </Form.Control>
+            {isActive ? (
+              <i className="fa-solid fa-arrow-up-1-9"></i>
+            ) : (
+              <i className="fa-solid fa-arrow-up-9-1"></i>
+            )}
+          </div>
         </div>
       </div>
 
       <Container>
         <Row lg={2} md={2}>
-          {productData.length > 0 ? (
+          {isLoading ? (
+            <Loader />
+          ) : productData.length > 0 ? (
             productData.map((item) => (
-              <Col lg={6} key={item.id}>
-                <ProductsCard key={item.id} data={item} />
+              <Col lg={6} key={item._id}>
+                <ProductsCard data={item} />
               </Col>
             ))
           ) : (

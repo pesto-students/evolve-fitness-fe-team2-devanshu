@@ -2,101 +2,104 @@ import React from "react";
 import BlogDetailImageCard from "../../components/Blog/BlogDetailImageCard";
 import { Container, Breadcrumb } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import classes from "./BlogDetails.module.css";
 
 const BlogsDetails = () => {
   const navigate = useNavigate();
   return (
-    <Container>
+    <Container style={{ marginTop: "30px" }}>
       <Breadcrumb>
         <Breadcrumb.Item onClick={() => navigate("/")}>Home</Breadcrumb.Item>
-        <Breadcrumb.Item onClick={() => navigate(`/blog}`)}>
+        <Breadcrumb.Item onClick={() => navigate("/blog")}>
           {`All Blogs`}
         </Breadcrumb.Item>
         <Breadcrumb.Item active>{`food`}</Breadcrumb.Item>
       </Breadcrumb>
-      <BlogDetailImageCard />
+      <BlogDetailImageCard
+        image={
+          "https://storage.googleapis.com/aawaz-stateless/2019/12/health-benefits-of-surya-namaskar-640x480.jpg"
+        }
+      />
 
       <Container>
-        <h1
-          style={{
-            fontWeight: "700",
-            color: "black",
-            fontSize: "20px",
-          }}
-        >
-          Some heading about artical{" "}
-        </h1>
-        <div
-          style={{
-            fontWeight: "500",
-            fontSize: "17px",
-            lineHeight: "30px",
-            letterSpacing: "1.3px",
-          }}
-          dangerouslySetInnerHTML={{
-            __html: `
-             
-                Phasellus deserunt. Convallis perspiciatis fusce fermentum
-                accumsan, arcu aliquam, velit venenatis augue proin, enim etiam
-                dolor. Mi ac lectus vitae cum, fusce purus posuere neque amet,
-                nulla in ultrices justo nec posuere lobortis. Tristique libero
-                est laoreet eget et adipiscing. Erat placerat. Tincidunt
-                habitant mattis et. Aliquam lectus at, a euismod nunc quam. Per
-                nibh nibh sagittis, in lacus malesuada libero ac. Nec pede
-                donec, scelerisque vestibulum integer ut. Tortor a molestie
-                lobortis praesent eleifend. Class ligula adipiscing ac mollis
-                risus. Ipsum neque volutpat assumenda tincidunt, libero integer
-                ac elit magna vitae vel, hendrerit neque sollicitudin quam
-                lectus, vel vestibulum. Adipiscing ipsam sollicitudin ac proin
-                praesent, neque doloremque ac sollicitudin vitae aliquam nunc.
-                Libero labore tortor, justo odio nulla porta a rhoncus,
-                phasellus pulvinar non. Lobortis lorem sed et vitae tempore
-                luctus, tellus sem euismod ut, non nec fermentum feugiat erat.
-                Rerum sapien, in itaque arcu, sit nulla sed adipiscing tincidunt
-                risus, taciti sed, quis metus ut eu. Ante pulvinar vehicula
-                eget, mi odio ac euismod, libero vitae semper sed, aliquam
-                tincidunt est lacus pretium fermentum sed. Nec porttitor,
-                dapibus fringilla wisi mi consectetuer, congue proin nullam.
-                Nullam libero sed aliqua risus at non. Orci mollis, donec quam
-                massa gravida suscipit neque sed, condimentum lacus tellus id,
-                sodales malesuada auctor nonummy vestibulum interdum rutrum.
-                Reprehenderit non, natoque sint, lacus sit fringilla sed,
-                integer non, rutrum lacinia quis tortor sed pellentesque
-                aliquet. Accumsan eu error sed, praesent magna pede curabitur
-                mus fermentum. Mauris sem nunc at phasellus adipisicing, et sed
-                ultricies et, netus quam arcu ante. At nibh, dapibus est
-                scelerisque venenatis non, erat et non volutpat id nec sapien.
-                Donec bibendum urna quis orci molestie sodales. Pellentesque
-                habitant morbi tristique senectus et netus et malesuada fames ac
-                turpis egestas. Nunc id purus vel sapien pretium varius eu id
-                risus. Vivamus sit amet nibh sit amet eros porta iaculis. Ut
-                interdum diam nec imperdiet elementum. Proin condimentum
-                faucibus placerat. Donec massa justo, porttitor tincidunt eros
-                a, vehicula malesuada tortor. Praesent nec sem ut justo
-                efficitur tempus. Donec dolor elit, pellentesque a massa
-                pellentesque, euismod sagittis ipsum. Nullam a diam ac turpis
-                iaculis vulputate. Nunc tellus libero, tempus id luctus eget,
-                fermentum et quam. Aliquam erat volutpat. Donec sit amet nunc
-                vitae justo dapibus dignissim. Vivamus sagittis dignissim massa,
-                auctor aliquam nibh aliquam ut. Nunc accumsan ex ligula, in
-                malesuada sapien consectetur in. Praesent non lectus sed dolor
-                imperdiet mollis a sit amet sem. Vivamus eu commodo ligula.
-                Phasellus in lacus eu urna ullamcorper lacinia. Duis tincidunt
-                fringilla aliquet. Vivamus id luctus tellus. Vestibulum maximus
-                ipsum lacus, tempus suscipit augue fermentum ut. Suspendisse
-                posuere mi lacus, vitae fringilla leo gravida eu. Donec bibendum
-                urna quis orci molestie sodales. Pellentesque habitant morbi
-                tristique senectus et netus et malesuada fames ac turpis
-                egestas. Nunc id purus vel sapien pretium varius eu id risus.
-                Vivamus sit amet nibh sit amet eros porta iaculis. Ut interdum
-                diam nec imperdiet elementum. Proin condimentum faucibus
-                placerat. Donec massa justo, porttitor tincidunt eros a,
-                vehicula malesuada tortor. Praesent nec sem ut justo efficitur
-                tempus.
-              
-            `,
-          }}
-        ></div>
+        <div className={classes.BlogContant}>
+          <p>
+            Surya Namaskar” or Sun-salutation is an ancient method of expressing
+            gratitude towards the sun, which is the source of all forms of life
+            and energy on earth. It is a sequence of twelve yogic postures or
+            asanas performed as a continuous exercise. There was a tradition of
+            offering “arghya” to the sun in the ancient times, Surya Namaskar is
+            a more advanced way of doing the same while gaining mental,
+            physical, spiritual and physiological benefits.
+          </p>
+          <h4> 7 Health Benefits of Surya Namaskar</h4>
+          <div className={classes.ImageWrap}>
+            <img src="https://storage.googleapis.com/aawaz-stateless/2019/12/1-half-sequence-of-the-practice-500x360.jpg" />
+          </div>
+          <li>
+            Surya Namaskar is a complete exercise that exerts its effects on
+            every part of the body. Practice of Suryanamaskar makes the body
+            flexible. It especially improves the flexibility of the spine and
+            limbs. Flexibility of the spine means bye-bye back and neck
+            problems!
+          </li>
+          <li>
+            The practice of inhalation and exhalation while performing Surya
+            Namaskar enhances the blood circulation in the body. This regulates
+            the blood pressure and benefits in case of low and high blood
+            pressure. The act of deep breathing flushes out toxins from the body
+            increasing alertness, productivity and making one feel more alive
+            than before.
+          </li>
+          <li>
+            Surya Namaskar stimulates the brain cells in the body hence
+            preventing memory loss. The practice also helps in building focus
+            and concentration by improving the functioning of brain.
+          </li>
+          <div className={classes.ImageWrap}>
+            <img src="https://storage.googleapis.com/aawaz-stateless/2019/12/2-women-highly-benefit-through-regular-practice-of-suryanamaskar-500x360.jpg" />
+          </div>
+          <li>
+            Since young women are in sync with nature’s lunar cycles, they
+            highly benefit from the regular practice of Suryanamaskar as their
+            menstrual cycle becomes regular and pain-free.
+          </li>
+          <li>
+            Adding the mantras during the practice removes monotony, brings
+            harmony and produces soothing vibrations that drive away fatigue.
+            The act of surrendering yourself to the sun removes the self-binding
+            ego in the practitioner.
+          </li>
+          <li>
+            The sun being the ultimate source of energy provides abundant energy
+            to the practitioner thereby leaving their skin glowing and radiant.
+            It also enhances vigour and vitality and boosts the strength of the
+            body organs.
+          </li>
+          <li>
+            Surya Namaskar practice is the ideal exercise to cure the insomnia
+            problem. It basically calms the mind. Due to the unique breathing
+            pattern, the mind feels relaxed completely thus improving the sleep
+            patterns of the person practicing it.
+          </li>
+          <div className={classes.ImageWrap}>
+            <img src="https://storage.googleapis.com/aawaz-stateless/2019/12/3-sunrise-the-best-time-to-practice-suryanamaskar-500x360.jpg" />
+          </div>
+          <p>
+            The best time to practice Surya Namaskar is at sunrise because at
+            that time, the sun’s radiations are nourishing and soothing in
+            nature. It is best practiced after a cold water bath. The
+            temperature of the water should be 3-4 degrees lesser than the room
+            temperature. This aids in the contraction of the intercellular
+            spaces, thus filling the spaces with energy that is generated by the
+            practice. So, Surya Namaskar is a complete workout for the mind,
+            body and the soul. It transforms the individual by working on all
+            energy centers. However, it is important to note than any form of
+            exercise should be consciously learnt under an instructor and one
+            must avoid self-learning to prevent injuries or ill-effects of wrong
+            practice.
+          </p>
+        </div>
       </Container>
     </Container>
   );

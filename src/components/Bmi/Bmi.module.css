@@ -50,7 +50,7 @@
     rgba(255, 254, 254, 0.1) 82.63%
   );
   border: 1px solid #ffffff;
-  backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 10px;
   padding: 40px;
@@ -71,6 +71,7 @@
   border-radius: 5px;
   color: white;
   margin-top: 12px;
+  font-size: 14px;
 }
 .BmiPoundsBtn {
   box-sizing: border-box;
@@ -82,4 +83,5 @@
   color: #f21137;
   margin-top: 12px;
   text-align: center;
+  cursor: auto !important;
 }

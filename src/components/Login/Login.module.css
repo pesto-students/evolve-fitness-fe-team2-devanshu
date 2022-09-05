@@ -1,0 +1,23 @@
+.LoginContainer {
+  font-weight: 500;
+  font-size: 14px;
+  height: auto;
+  line-height: normal;
+  max-width: 220px;
+  min-height: 40px;
+  padding: 8px 16px;
+  text-align: left;
+  width: 100%;
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+  margin: 42px auto;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+.LoginContainer span {
+  margin-left: 12px;
+}

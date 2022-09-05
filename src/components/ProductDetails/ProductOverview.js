@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./ProductOverview.module.css";
-import DirectionIcon from "../../assests/ProducDetials/Direction.svg";
 import { Row, Col } from "react-bootstrap";
 
 const ProductOverview = ({ description, address }) => {
@@ -8,14 +7,17 @@ const ProductOverview = ({ description, address }) => {
     <Row>
       <Col lg={9} md={6}>
         <h4>About Fitness Center</h4>
-        <p>{description}</p>
+        <div dangerouslySetInnerHTML={{ __html: `${description}` }}></div>
       </Col>
       <Col lg={3} md={6}>
         <div className={classes.ProductOverviewCall}>
           <h4>Call</h4>
-          <p className={classes.ProductOverviewCallNumber}>
-            {address.phoneNumber || null}
-          </p>
+          <a href={`tel:${address.phoneNumber}`} className="text-white">
+            <p className={classes.ProductOverviewCallNumber}>
+              {address.phoneNumber || null}
+            </p>
+          </a>
+
           <h4>Direction</h4>
           <div
             className={classes.ProductOverviewMap}

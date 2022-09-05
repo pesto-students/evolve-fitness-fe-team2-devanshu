@@ -1,11 +1,14 @@
 import React from "react";
 import classes from "./serviceCard.module.css";
 import { Link } from "react-router-dom";
+import { selectCity } from "../../Redux/features/UserSlice";
+import { useSelector } from "react-redux";
 
 const ServicesCard = (props) => {
+  let city = useSelector(selectCity);
   return (
     <div className={classes.Servicescard_wraapper}>
-      <Link to={`/Fitness-center/${props.data.type}`}>
+      <Link to={`/Fitness-center/${city}/${props.data.type}`}>
         <div className={classes.Servicescard_Imagewraapper}>
           <img
             src={props.data.Image}

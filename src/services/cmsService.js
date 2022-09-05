@@ -1,9 +1,9 @@
 import axios from "axios";
 import auth from "./authentication";
-const baseURL = "http://localhost:8000/api";
+const baseURL = "https://evolvefitness.herokuapp.com/api";
 
-const CreateProduct = (data) => {
-  return axios.post(`${baseURL}/product/create`, data, { auth: auth });
+const CreateProduct = (data, id) => {
+  return axios.post(`${baseURL}/product/create/${id}`, data, { auth: auth });
 };
 const UpdateProduct = (data, productId, userId) => {
   return axios.put(`${baseURL}/product/${productId}/${userId}`, data, {
@@ -19,12 +19,14 @@ const getProduct = () => {
 const getProductById = (id) => {
   return axios.get(`${baseURL}/product/${id}`, { auth: auth });
 };
-const getProductByFitnessType = (id) => {
-  return axios.get(`${baseURL}/product/fitnessType/${id}`, { auth: auth });
+const getProductByFitnessType = (id, city) => {
+  return axios.get(`${baseURL}/product/fitnessType/${city}/${id}`, {
+    auth: auth,
+  });
 };
 const getProductByCity = (id) => {
   return axios.get(`${baseURL}//product/city/${id}`, { auth: auth });
-}; 
+};
 
 export {
   CreateProduct,

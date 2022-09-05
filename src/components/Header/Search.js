@@ -4,8 +4,10 @@ import classes from "./header.module.css";
 import { Form } from "react-bootstrap";
 import { setCity, selectCity } from "../../Redux/features/UserSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
+  let navigate = useNavigate();
   let dispatch = useDispatch();
   let cityName = useSelector(selectCity);
   const HandelCity = (e) => {
@@ -14,7 +16,7 @@ const Search = () => {
         city: e.target.value,
       })
     );
-    console.log(e.target.value);
+    navigate("/");
   };
   return (
     <div className={classes.HeaderSearch}>
@@ -31,7 +33,7 @@ const Search = () => {
           Bhopal
         </option>
         <option value={"delhi"}>{"Delhi"}</option>
-        <option value={"banglore"}>{"Banglore"}</option>
+        <option value={"bangalore"}>{"Bangalore"}</option>
       </Form.Control>
     </div>
   );

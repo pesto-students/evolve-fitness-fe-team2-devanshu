@@ -1,6 +1,5 @@
-import React, { useEffect, useState, Component } from "react";
-import { Form, Col, Button, Figure, Container, Row } from "react-bootstrap";
-import axios from "axios";
+import React, { Component } from "react";
+import { Form, Col, Button, Container, Row } from "react-bootstrap";
 import ProdctImageCard from "../../components/ProductDetails/ProdctImageCard";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -28,6 +27,7 @@ class CreateProductDetails extends Component {
       country: "",
       area: "",
       city: "",
+      completeAddress: "",
       url: "",
     },
     price: {
@@ -69,7 +69,6 @@ class CreateProductDetails extends Component {
     } else {
       this.setState({ [e.target.name]: e.target.value });
     }
-    console.log(e.target.value);
   };
 
   //  HANDEL PRICE CARD
@@ -149,8 +148,9 @@ class CreateProductDetails extends Component {
       }
     }
 
-    CreateProduct(formData)
+    CreateProduct(formData, this.props.userId)
       .then((res) => {
+        this.setState({ Edit: true });
         toast.success(`${res.data.name} created sucessfully`);
         this.setState({ isLoading: false });
         this.props.navigation(`/create-fitness-center/${this.props.userId}`);
@@ -235,12 +235,14 @@ class CreateProductDetails extends Component {
             this.setState({ Edit: true });
           }
         })
-        .then((err) => {});
+        .then((err) => {
+          console.log(err);
+        });
     }
   }
   render() {
     return (
-      <Container>
+      <Container style={{ marginTop: "30px" }}>
         {this.state.isLoading ? (
           <Loader />
         ) : (
@@ -280,6 +282,7 @@ class CreateProductDetails extends Component {
                 name="name"
                 value={this.state.name}
                 onChange={this.OnchangeHandler}
+                required={true}
               />
             </Form.Group>
             {/*  Description Filed */}
@@ -294,229 +297,283 @@ class CreateProductDetails extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.OnchangeHandler}
+                required={true}
               />
             </Form.Group>
 
-            {/*  Category  and PhoneNumber Filed */}
-            <Form.Group>
-              <Row>
-                <Col>
-                  <Form.Label className={classes.FormLable}>
-                    Category: <span className="asterisk"> *</span>
-                  </Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="category"
-                    value={this.state.category}
-                    onChange={this.OnchangeHandler}
-                    required={true}
-                  >
-                    <option defaultValue value="">
-                      Select a category
-                    </option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="unisex">Unisex</option>
-                  </Form.Control>
-                </Col>
-                {/*  FITNESS TYPE */}
-                <Col>
-                  <Form.Label className={classes.FormLable}>
-                    Fitness Center Type: <span className="asterisk"> *</span>
-                  </Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="fitnessType"
-                    value={this.state.fitnessType}
-                    onChange={this.OnchangeHandler}
-                    required={true}
-                  >
-                    <option defaultValue value="">
-                      Select a type
-                    </option>
-                    <option value="gym">Gym</option>
-                    <option value="yoga">Yoga</option>
-                    <option value="zumba">Zumba</option>
-                    <option value="martialart">Martial Art</option>
-                  </Form.Control>
-                </Col>
-                <Col>
-                  <Form.Label className={classes.FormLable}>
-                    PhoneNumber
-                  </Form.Label>
-                  <PhoneInput
-                    country={"us"}
-                    name="PhoneNumber"
-                    value={this.state.address.phoneNumber}
-                    onChange={(phoneNumber) =>
-                      this.OnchangePhoneNumber(phoneNumber)
-                    }
-                  />
-                </Col>
-              </Row>
-            </Form.Group>
+            {/* Price Fied */}
+            <Container style={{ marginTop: "54px" }}>
+              <Form.Group>
+                <Row xs={"auto"} md={2} lg={5}>
+                  {Object.keys(this.state.price).map((key) => (
+                    <Col className={classes.priceCard} key={key}>
+                      <div className={classes.priceCardName}>
+                        <h4
+                          style={{ textTransform: "uppercase" }}
+                        >{`${key}Card`}</h4>
+                      </div>
 
-            {/* Price Filed */}
-            <Form.Group>
-              <Row>
-                {Object.keys(this.state.price).map((key, index) => (
-                  <Col className={classes.priceCard}>
-                    <div className={classes.priceCardName}>
-                      <h4>{`${key} Card`}</h4>
-                    </div>
+                      <Col>
+                        <Form.Label className={classes.FormLable}>
+                          {`${key} price`}
+                        </Form.Label>
+                        <Form.Control
+                          type="number"
+                          placeholder="price"
+                          name="price"
+                          value={this.state.price[key].price}
+                          onChange={(e) => this.OnchangeCardPrice(e, `${key}`)}
+                          required={true}
+                        />
+                      </Col>
+                      <Col>
+                        <Form.Label className={classes.FormLable}>
+                          {`${key} Duration`}
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Duration"
+                          name="duration"
+                          value={this.state.price[key].duration}
+                          onChange={(e) => this.OnchangeCardPrice(e, `${key}`)}
+                          required={true}
+                        />
+                      </Col>
+                      <Col>
+                        <Form.Label className={classes.FormLable}>
+                          {`${key} Trainer Fee`}
+                        </Form.Label>
+                        <Form.Control
+                          type="number"
+                          placeholder="Personal Trainer Fee"
+                          name="personalTrainer"
+                          value={this.state.price[key].personalTrainer}
+                          onChange={(e) => this.OnchangeCardPrice(e, `${key}`)}
+                          required={true}
+                        />
+                      </Col>
+                    </Col>
+                  ))}
+                </Row>
+              </Form.Group>
+            </Container>
 
-                    <Col>
-                      <Form.Label className={classes.FormLable}>
-                        {`${key} price`}
-                      </Form.Label>
-                      <Form.Control
-                        type="number"
-                        placeholder="price"
-                        name="price"
-                        value={this.state.price[key].price}
-                        onChange={(e) => this.OnchangeCardPrice(e, `${key}`)}
-                        required={true}
-                      />
-                    </Col>
-                    <Col>
-                      <Form.Label className={classes.FormLable}>
-                        {`${key} Duration`}
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Duration"
-                        name="duration"
-                        value={this.state.price[key].duration}
-                        onChange={(e) => this.OnchangeCardPrice(e, `${key}`)}
-                        required={true}
-                      />
-                    </Col>
-                    <Col>
-                      <Form.Label className={classes.FormLable}>
-                        {`${key} Trainer Fee`}
-                      </Form.Label>
-                      <Form.Control
-                        type="number"
-                        placeholder="Personal Trainer Fee"
-                        name="personalTrainer"
-                        value={this.state.price[key].personalTrainer}
-                        onChange={(e) => this.OnchangeCardPrice(e, `${key}`)}
-                        required={true}
-                      />
-                    </Col>
+            {/*  Category and FITNESS TYPE  */}
+            <Container style={{ marginTop: "50px" }}>
+              <Form.Group>
+                <Row>
+                  <Col>
+                    <Form.Label className={classes.FormLable}>
+                      Category: <span className="asterisk"> *</span>
+                    </Form.Label>
+                    <Form.Control
+                      as="select"
+                      name="category"
+                      value={this.state.category}
+                      onChange={this.OnchangeHandler}
+                      required={true}
+                    >
+                      <option defaultValue value="">
+                        Select a category
+                      </option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="unisex">Unisex</option>
+                    </Form.Control>
                   </Col>
-                ))}
-              </Row>
-            </Form.Group>
+                  {/*  FITNESS TYPE */}
+                  <Col>
+                    <Form.Label className={classes.FormLable}>
+                      Fitness Center Type: <span className="asterisk"> *</span>
+                    </Form.Label>
+                    <Form.Control
+                      as="select"
+                      name="fitnessType"
+                      value={this.state.fitnessType}
+                      onChange={this.OnchangeHandler}
+                      required={true}
+                    >
+                      <option defaultValue value="">
+                        Select a type
+                      </option>
+                      <option value="gym">Gym</option>
+                      <option value="yoga">Yoga</option>
+                      <option value="zumba">Zumba</option>
+                      <option value="martialart">Martial Art</option>
+                    </Form.Control>
+                  </Col>
+                </Row>
+              </Form.Group>
+            </Container>
 
             {/*  Address and Map fields */}
 
-            <Form.Group>
-              <Row>
-                <Col>
+            <Container style={{ marginTop: "54px" }}>
+              <Form.Group>
+                <Row xs={1} md={2} lg={4}>
+                  <Col>
+                    <Col>
+                      <Form.Label className={classes.FormLable}>
+                        PhoneNumber
+                      </Form.Label>
+                      <PhoneInput
+                        country={"us"}
+                        name="PhoneNumber"
+                        value={this.state.address.phoneNumber}
+                        onChange={(phoneNumber) =>
+                          this.OnchangePhoneNumber(phoneNumber)
+                        }
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Label className={classes.FormLable}>
+                        Country
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Country"
+                        name="country"
+                        value={this.state.address.country}
+                        onChange={(e) => this.OnchangeAddress(e)}
+                        required={true}
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Label className={classes.FormLable}>
+                        State
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="State"
+                        name="state"
+                        value={this.state.address.state}
+                        onChange={(e) => this.OnchangeAddress(e)}
+                        required={true}
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Label className={classes.FormLable}>
+                        City
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="city"
+                        name="city"
+                        value={this.state.address.city}
+                        onChange={(e) => this.OnchangeAddress(e)}
+                        required={true}
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Label className={classes.FormLable}>
+                        Area
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Area"
+                        name="area"
+                        value={this.state.address.area}
+                        onChange={(e) => this.OnchangeAddress(e)}
+                        required={true}
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Group>
+                        <Form.Label className={classes.FormLable}>
+                          Address
+                        </Form.Label>
+
+                        <Form.Control
+                          as="textarea"
+                          rows={3}
+                          //   size="lg"
+                          placeholder="Address"
+                          name="completeAddress"
+                          value={this.state.address.completeAddress}
+                          onChange={(e) => this.OnchangeAddress(e)}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Col>
                   <Col>
                     <Form.Label className={classes.FormLable}>
-                      Country
+                      Embed Map
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Country"
-                      name="country"
-                      value={this.state.address.country}
+                      placeholder="Map Url"
+                      name="url"
+                      value={this.state.address.url}
                       onChange={(e) => this.OnchangeAddress(e)}
                       required={true}
                     />
+                    <div
+                      className={classes.MapContant}
+                      dangerouslySetInnerHTML={{
+                        __html: this.state.address.url,
+                      }}
+                    ></div>
                   </Col>
                   <Col>
-                    <Form.Label className={classes.FormLable}>State</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="State"
-                      name="state"
-                      value={this.state.address.state}
-                      onChange={(e) => this.OnchangeAddress(e)}
-                      required={true}
-                    />
+                    <div
+                      style={{ padding: "12px", width: "100%", height: "auto" }}
+                    >
+                      <h4 style={{ fontWeight: "600" }}>
+                        Embed a map or directions Open Google Maps
+                      </h4>
+                      <ol>
+                        <li>Open Google Maps.</li>
+                        <li>
+                          Go to the directions, map, or Street View image you'd
+                          like to embed.
+                        </li>
+                        <li>In the top left, click Menu.</li>
+                        <li>Click Share or embed map.</li>
+                        <li>Click Embed map.</li>
+                        <li>
+                          To the left of the text box, pick the size you want by
+                          clicking the Down arrow .
+                        </li>
+                        <li>Copy the text in the box.</li>
+                      </ol>
+                    </div>
                   </Col>
                   <Col>
-                    <Form.Label className={classes.FormLable}>City</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="city"
-                      name="city"
-                      value={this.state.address.city}
-                      onChange={(e) => this.OnchangeAddress(e)}
-                      required={true}
-                    />
-                  </Col>
-                  <Col>
-                    <Form.Label className={classes.FormLable}>Area</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Area"
-                      name="area"
-                      value={this.state.address.area}
-                      onChange={(e) => this.OnchangeAddress(e)}
-                      required={true}
-                    />
-                  </Col>
-                </Col>
-                <Col>
-                  <Form.Label className={classes.FormLable}>
-                    {" "}
-                    Embed Map
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Map Url"
-                    name="url"
-                    value={this.state.address.url}
-                    onChange={(e) => this.OnchangeAddress(e)}
-                    required={true}
-                  />
-                  <div
-                    dangerouslySetInnerHTML={{ __html: this.state.address.url }}
-                  ></div>
-                </Col>
-                <Col>
-                  <div
-                    style={{ padding: "12px", width: "100%", height: "auto" }}
-                  >
-                    <h4 style={{ fontWeight: "600" }}>
-                      Embed a map or directions Open Google Maps
-                    </h4>
-                    <ol>
-                      <li>Open Google Maps.</li>
-                      <li>
-                        Go to the directions, map, or Street View image you'd
-                        like to embed.
-                      </li>
-                      <li>In the top left, click Menu.</li>
-                      <li>Click Share or embed map.</li>
-                      <li>Click Embed map.</li>
-                      <li>
-                        To the left of the text box, pick the size you want by
-                        clicking the Down arrow .
-                      </li>
-                      <li>Copy the text in the box.</li>
-                    </ol>
                     <img
                       src="http://extension.umaine.edu/plugged-in/wp-content/uploads/sites/54/2018/09/embed-map.jpg"
                       style={{ width: "100%", height: "100%" }}
+                      className={classes.EmbedeInstruction}
                     />
-                  </div>
-                </Col>
-              </Row>
-            </Form.Group>
-            {this.state.Edit === false ? (
-              <Button type="submit" variant="info">
-                Publish
-              </Button>
-            ) : (
-              <Button type="submit" variant="info">
-                update
-              </Button>
-            )}
+                  </Col>
+                </Row>
+              </Form.Group>
+            </Container>
+            <div
+              style={{
+                width: "100%",
+                height: "auto",
+                margin: "40px",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <div>
+                {this.state.Edit === false ? (
+                  <>
+                    {" "}
+                    <Button type="submit" className={classes.SubmitBtn}>
+                      Publish
+                    </Button>
+                  </>
+                ) : (
+                  <Col>
+                    <Button type="submit" className={classes.SubmitBtn}>
+                      update
+                    </Button>
+                  </Col>
+                )}
+              </div>
+            </div>
           </Form>
         )}
       </Container>
