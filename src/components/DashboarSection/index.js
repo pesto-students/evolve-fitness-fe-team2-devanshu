@@ -10,7 +10,7 @@ function DashboardSecton(props) {
           fontSize: "25px",
           margin: "8px 0px",
           fontWeight: 500,
-          textTransform: "capitalize",
+          // textTransform: "capitalize",
         }}
       >
         {props.heading}

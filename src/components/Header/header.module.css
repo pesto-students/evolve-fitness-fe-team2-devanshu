@@ -54,6 +54,7 @@
   border-radius: 0px !important;
   width: auto !important;
   color: white !important;
+  cursor: pointer;
 }
 .LoactionFilter > option {
   background-color: transparent !important;

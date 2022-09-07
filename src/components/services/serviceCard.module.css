@@ -23,14 +23,14 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .Servicescard_Discription {
   margin-top: 12px;
 }
 .Servicescard_Title {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--heading-text);
 }
 .Servicescard_para {

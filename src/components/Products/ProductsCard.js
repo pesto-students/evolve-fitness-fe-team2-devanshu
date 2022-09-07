@@ -29,6 +29,9 @@ const ProductsCard = (props) => {
 
           <div className={classes.Productscard_Discription}>
             <div className={classes.Productscard_Title}>{props.data.name}</div>
+            <div
+              className={classes.Productscard_Package}
+            >{` Minimum package ${props.data.price.gold.duration} - ₹ ${props.data.price.gold.price}`}</div>
             <div className={classes.Productscard_Rating_Section}>
               <div className={classes.Productscard_Rating}>
                 <span
