@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductsCard from "../../components/Products/ProductsCard";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Banner from "../../components/Banner.js";
 import { getProductByFitnessType } from "../../services/cmsService";
 import { useParams } from "react-router-dom";
@@ -32,12 +32,10 @@ const Products = () => {
       let data = productData.sort(
         (a, b) => Number(b.price.gold.price) - Number(a.price.gold.price)
       );
-      console.log(data[0].price.gold.price);
     } else {
       let data = productData.sort(
         (a, b) => Number(a.price.gold.price) - Number(b.price.gold.price)
       );
-      console.log(data[0].price.gold.price);
     }
   };
   return (
@@ -58,26 +56,39 @@ const Products = () => {
         }}
       >
         <div
-          style={{ textTransform: "capitalize", fontWeight: "500" }}
+          style={{ textTransform: "capitalize", fontWeight: "600" }}
         >{`${id} Center  "${city}"`}</div>
         <div>
-          <div
-            style={{
-              backgroundColor: isActive ? "#f21137" : "black",
-              color: "white",
-              padding: "8px 20px",
-              borderRadius: "5px",
-              width: "100%",
-              cursor: "pointer",
-            }}
-            onClick={() => FilterRating(isActive)}
+          <OverlayTrigger
+            placement={"left"}
+            overlay={
+              <Tooltip id={`tooltip-${"low"}`}>
+                {isActive ? (
+                  <strong>{"Low to High pice"}</strong>
+                ) : (
+                  <strong>{"High to Low pice"}</strong>
+                )}
+              </Tooltip>
+            }
           >
-            {isActive ? (
-              <i className="fa-solid fa-arrow-up-1-9"></i>
-            ) : (
-              <i className="fa-solid fa-arrow-up-9-1"></i>
-            )}
-          </div>
+            <div
+              style={{
+                backgroundColor: isActive ? "#f21137" : "#68020f",
+                color: "white",
+                padding: "8px 20px",
+                borderRadius: "5px",
+                width: "100%",
+                cursor: "pointer",
+              }}
+              onClick={() => FilterRating(isActive)}
+            >
+              {isActive ? (
+                <i className="fa-solid fa-arrow-up-1-9"></i>
+              ) : (
+                <i className="fa-solid fa-arrow-up-9-1"></i>
+              )}
+            </div>
+          </OverlayTrigger>
         </div>
       </div>
 

@@ -21,7 +21,9 @@ function BlogDetailImageCard({ image }) {
           />
         </div>
         <div className="col-lg-5 mt-2 mt-lg-0">
-          <h1>{"7 Health Benefits Of Surya Namaskar"}</h1>
+          <h1 style={{ fontFamily: "Adobe Clean", fontWeight: 900 }}>
+            {"7 Health Benefits Of Surya Namaskar"}
+          </h1>
           <p style={{ color: "gray" }}>{"August 23, 2022"}</p>
         </div>
       </Row>

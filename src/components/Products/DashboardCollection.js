@@ -20,7 +20,9 @@ const DashboardCollection = () => {
   }, [cityName]);
   return (
     <DashboardSecton
-      heading={data.length > 0 ? `Fitness Center "${cityName}"` : ""}
+      heading={
+        data.length > 0 ? `Fitness Center  in and around "${cityName}"` : ""
+      }
     >
       {data.map((item, index) => (
         <ProductsCard key={index} data={item} />

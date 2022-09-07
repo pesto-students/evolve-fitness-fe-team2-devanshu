@@ -21,6 +21,7 @@ import { signInAnonymously, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.config";
 
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const Header = () => {
   let dispatch = useDispatch();
@@ -65,9 +66,11 @@ const Header = () => {
             photoURL: null,
           })
         );
+        toast.success("Logout successfully");
         CreateAnonymousUser();
       })
       .catch((err) => {
+        toast.error("Logout failed");
         console.log(err);
       });
   };
@@ -82,48 +85,51 @@ const Header = () => {
         <Search />
       </div>
       <div className={classes.UserImageWrapper}>
-        {userImage === null ? (
-          <img
-            src={UserLogin}
-            alt="Dark"
-            width={35}
-            height={35}
-            className={classes.UserImg}
-            onClick={() => handelSignIn()}
-            style={{ cursor: "pointer", borderRadius: "50%" }}
-          />
-        ) : (
-          <Dropdown>
-            <Dropdown.Toggle
-              variant="success"
-              id="dropdown-basic"
-              style={{
-                color: "#000",
-                backgroundColor: "#000",
-                borderColor: "#000",
-              }}
-            >
-              <img
-                src={userImage}
-                onError={({ currentTarget }) => {
-                  currentTarget.onerror = null; // prevents looping
-                  currentTarget.src = UserLogin;
+        <>
+          {userImage === null ? (
+            <img
+              src={UserLogin}
+              alt="Dark"
+              width={35}
+              height={35}
+              className={classes.UserImg}
+              onClick={() => handelSignIn()}
+              style={{ cursor: "pointer", borderRadius: "50%" }}
+            />
+          ) : (
+            <Dropdown>
+              <Dropdown.Toggle
+                variant="success"
+                id="dropdown-basic"
+                style={{
+                  color: "#000",
+                  backgroundColor: "#000",
+                  borderColor: "#000",
+                  boxShadow: "none",
                 }}
-                alt="user"
-                width={35}
-                height={35}
-                onClick={() => handelSignOut()}
-                style={{ cursor: "pointer", borderRadius: "50%" }}
-              />
-            </Dropdown.Toggle>
+              >
+                <img
+                  src={userImage}
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null; // prevents looping
+                    currentTarget.src = UserLogin;
+                  }}
+                  alt="user"
+                  width={35}
+                  height={35}
+                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                />
+              </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item></Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Logout</Dropdown.Item>
-              <Dropdown.Item></Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        )}
+              <Dropdown.Menu>
+                <Dropdown.Item></Dropdown.Item>
+                <Dropdown.Item onClick={() => handelSignOut()}>
+                  Logout
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
+        </>
       </div>
     </div>
   );

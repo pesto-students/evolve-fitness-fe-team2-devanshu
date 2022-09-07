@@ -111,7 +111,7 @@ function Footer() {
               <ul className="list-unstyled">
                 <li className="mb-2">
                   <Link to="/partner-with-us" className="text-white">
-                    partner-with-us
+                    Partner With Us
                   </Link>
                 </li>
                 {/* <li className="mb-2">
