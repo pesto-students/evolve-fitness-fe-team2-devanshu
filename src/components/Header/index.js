@@ -3,7 +3,7 @@ import classes from "./header.module.css";
 import Search from "./Search";
 import UserLogin from "../../assests/headerIcons/user.png";
 import Logo from "../../assests/headerIcons/Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 
 //  User Slice
@@ -25,6 +25,7 @@ import { toast } from "react-toastify";
 
 const Header = () => {
   let dispatch = useDispatch();
+  let navigate = useNavigate();
   let userImage = useSelector(selectUserImage);
   const CreateAnonymousUser = () => {
     signInAnonymously(auth);
@@ -67,6 +68,7 @@ const Header = () => {
           })
         );
         toast.success("Logout successfully");
+        navigate("/");
         CreateAnonymousUser();
       })
       .catch((err) => {
