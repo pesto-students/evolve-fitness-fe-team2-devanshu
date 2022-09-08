@@ -1,6 +1,7 @@
 .Productscard_wraapper {
-  margin: 12px 24px;
+  margin: 12px auto;
   padding: 10px;
+  max-width: 500px;
   border-radius: 10px;
   background-color: var(--primary-bg);
   border: 1px solid var(--border-white);
@@ -30,23 +31,28 @@
   max-width: 300px;
   width: 100%;
   height: 100%;
-  text-align: center;
+  text-align: left;
+  margin-left: 12px;
 }
 .Productscard_Title {
   font-size: 18px;
   font-weight: 500;
-  line-height: 30px;
+  line-height: 24px;
   color: var(--heading-text);
+  margin: 7px 0px;
 }
 .Productscard_Rating_Section {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 10px 0px;
+  max-width: 300px;
+  justify-content: center;
+  box-sizing: border-box;
 }
 .Productscard_Rating > span {
-  padding: 0.2rem;
+  padding: 0.4rem;
+  font-size: 18px;
   color: var(--rating-yellow);
 }
 

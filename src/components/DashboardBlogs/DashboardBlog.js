@@ -41,9 +41,7 @@ const DashboardBlog = () => {
     <Container fluid>
       <div
         style={{
-          fontSize: "30px",
-          // color: var(--heading-text),
-          //   marginBottom: "25px",
+          fontSize: "25px",
           marginTop: "20px",
           fontWeight: 500,
           textAlign: "left",
@@ -53,16 +51,13 @@ const DashboardBlog = () => {
         <div
           style={{
             fontSize: "14px",
-            // color: var(--heading-text),
             marginBottom: "25px",
-            // marginTop: "20px",
           }}
         >
           Recents Blogs
         </div>
       </div>
       <Container>
-        {/* <div style={{ width: "100%", margin: "0px auto" }}> */}
         <Row lg={2} md={2}>
           {Data.map((item) => (
             <Col key={item.id}>
@@ -70,7 +65,6 @@ const DashboardBlog = () => {
             </Col>
           ))}
         </Row>
-        {/* </div> */}
       </Container>
     </Container>
   );

@@ -25,7 +25,9 @@ const DashboardCollection = () => {
       }
     >
       {data.map((item, index) => (
-        <ProductsCard key={index} data={item} />
+        <div key={index} style={{ margin: "12px 24px" }}>
+          <ProductsCard data={item} />
+        </div>
       ))}
     </DashboardSecton>
   );

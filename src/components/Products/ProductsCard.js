@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./ProductsCard.module.css";
 import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 const ProductsCard = (props) => {
   const Average = () => {
