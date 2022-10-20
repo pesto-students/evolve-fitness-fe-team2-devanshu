@@ -1,5 +1,8 @@
 # Evolve Fitness
 
+![Evolve Fitness Logo](https://github.com/pesto-students/evolve-fitness-fe-team2-devanshu/blob/master/public/android-chrome-192x192png)
+
+
 Evolve Fitness will assist users in finding their preferred Nearby fitness center experience and also businesses to list their centers to be explored by the customers. With the help of the most up-to-date interactive UI experience, where users can locate branded and local goods as well as trendy fitness centers, Users can use our platform to get the most accurate results.
 
 
