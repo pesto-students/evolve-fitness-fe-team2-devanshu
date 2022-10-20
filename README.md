@@ -14,17 +14,7 @@ Evolve Fitness will assist users in finding their preferred Nearby fitness cente
 
 https://evolvefitness-359319.web.app/
 
-
-## Technology Stack
-
-We have used MERN stack for the project with some new technologies.
-
-- React JS
-- Bootstrap 
-- Firebase
-
-
-## Installation and Run the Project
+## Installation
 
 Install Evolve Fitness with npm
 
@@ -35,9 +25,19 @@ Install Evolve Fitness with npm
 
   npm start
 ```
+## Technology Stack
+
+We have used MERN stack for the project with some new technologies.
+
+- [React JS](https://reactjs.org/)
+- [Bootstrap](https://react-bootstrap.github.io/components/alerts/)
+- [Axios](https://axios-http.com/docs/intro)
+- [Firebase](https://firebase.google.com/)
+
+
 ## Authors
 
-- [@vipin](https://github.com/vipin98)
+- [vipin pandey](https://github.com/vipin98)
 
 
 ## License
