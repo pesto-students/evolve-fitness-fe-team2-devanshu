@@ -1,6 +1,6 @@
 # Evolve Fitness
 
-![Evolve Fitness Logo](./public/android-chrome-512x512.png)
+![Evolve Fitness Logo](./public/apple-touch-icon.png)
 
 
 Evolve Fitness will assist users in finding their preferred Nearby fitness center experience and also businesses to list their centers to be explored by the customers. With the help of the most up-to-date interactive UI experience, where users can locate branded and local goods as well as trendy fitness centers, Users can use our platform to get the most accurate results.
