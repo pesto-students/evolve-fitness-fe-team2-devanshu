@@ -13,6 +13,7 @@ import {
   setAdmin,
   selectUserId,
   selectIsAdmin,
+  setActiveUser,
 } from "../../Redux/features/UserSlice";
 import classes from "./PartnerLogin.module.css";
 import { toast } from "react-toastify";
@@ -85,7 +86,7 @@ const PartnerLogin = () => {
       if (user) {
         // User is signed in,
         dispatch(
-          setAdmin({
+          setActiveUser({
             userId: user.uid,
             userName: user.displayName,
             userEmail: user.email,
