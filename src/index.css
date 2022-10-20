@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap");
+
+@font-face {
+  font-family: "Adobe Clean";
+  src: url("./assests/Font/AdobeCleanUXLight.otf");
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root {
+  --rating-yellow: #ffe234;
+  --rating-background: #68020f;
+  --tab-button: #f21137;
+  --border-white: rgb(232, 232, 232);
+  --inactive-color: #f8f8f8;
+  --inactive-text: #696969;
+  --filter-text: #9c9c9c;
+  --heading-text: #1c1c1c;
+}
+.breadcrumb-item > a {
+  color: var(--tab-button) !important;
+  font-weight: 700;
+}
+a {
+  text-decoration: none;
+  color: #1c1c1c !important;
+}
+.nav-tabs .nav-link {
+  margin: 10px;
+  /* padding: 7px 20px; */
+  background-color: #f2eff0;
+  /* border-bottom: 1px; */
+  /* border: 1px solid gray; */
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+  /* border: 1px solid black; */
+  outline: none;
+  border-radius: 5px;
+  /* width: 95px; */
+  color: var(--heading-text);
+}
+
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: var(--tab-button);
+  border-color: #dee2e6 #dee2e6 #fff;
+  border-radius: 5px;
+}

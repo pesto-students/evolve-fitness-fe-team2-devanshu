@@ -1,0 +1,50 @@
+.DashboardBlogcard_wraapper {
+  margin: 12px auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--primary-bg);
+  border: 1px solid var(--border-white);
+  transition: transform 0.2s;
+  display: flex;
+  /* align-items: center; */
+  max-width: 500px;
+}
+.DashboardBlogcard_wraapper:hover {
+  box-shadow: 1px solid black;
+  transform: scale(1.1);
+}
+
+.DashboardBlogcard_Imagewraapper {
+  height: 248px;
+  width: 200px;
+  border-radius: 5px;
+  position: relative;
+}
+.DashboardBlogcard_Imagewraapper > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.DashboardBlogcard_PubliceDate {
+  font-size: 14px;
+  color: var(--inactive-text);
+  font-weight: 700;
+}
+.DashboardBlogcard_Discription {
+  margin-left: 12px;
+  width: 300px;
+  height: 100%;
+  text-align: left;
+}
+.DashboardBlogcard_Title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--heading-text);
+  margin: 7px 0px;
+}
+.DashboardBlogcard_para {
+  font-size: 14px;
+  color: var(--inactive-text);
+}

@@ -1,0 +1,25 @@
+.ProductDetailDiscriptionWrapper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.ProductDetailDiscriptionAverage > h4 {
+  font-size: 17px;
+  font-weight: 600;
+}
+.ProductDetailDiscriptionButton {
+  background-color: var(--rating-background);
+  padding: 7px 20px;
+  width: fit-content;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 17px;
+}
+.ProductDetailDiscriptionButton > span {
+  font-size: 11px;
+  margin-left: 4px;
+}

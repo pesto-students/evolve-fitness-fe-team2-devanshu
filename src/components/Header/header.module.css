@@ -1,0 +1,67 @@
+@media (max-width: 767px) {
+  .LogoImg {
+    width: 100px !important;
+  }
+  .Logo {
+    margin-left: 5px !important;
+  }
+  .HeaderSearch {
+    margin-left: 20px !important;
+  }
+}
+
+.HeaderWapper {
+  width: 100%;
+  height: auto;
+  /* position: fixed; */
+  top: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0px auto;
+  color: white;
+  background-color: #000000;
+  padding: 12px 0px;
+}
+.Logo {
+  margin-left: 12px;
+  display: flex;
+}
+.LogoImg {
+  width: 150px;
+}
+.UserImageWrapper {
+  margin-right: 12px;
+}
+.HeaderSearch {
+  width: 100%;
+  /* background-color: rgb(55, 59, 59); */
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  border-radius: 10px;
+  margin-left: 60px;
+  color: white;
+  /* padding: 15px; */
+}
+.LoactionFilter {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid white !important;
+  border-radius: 0px !important;
+  width: auto !important;
+  color: white !important;
+  cursor: pointer;
+}
+.LoactionFilter > option {
+  background-color: transparent !important;
+  color: #000000;
+}
+.btn-success .btn-success:hover {
+  color: #0000 !important;
+  background-color: "none" !important;
+  border-color: "none" !important;
+}

@@ -1,0 +1,43 @@
+.DisplayDisc {
+  margin: 60px auto;
+  text-align: center;
+}
+.DisplayDisc > h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.DisplayDisc > p {
+  font-size: 12px;
+  font-family: 500;
+}
+.DisplayCardWrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.CardWrap {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  background-color: #fffefe;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 30px auto;
+}
+
+.DisplayCardLeft > img {
+  width: 40px;
+}
+.DisplayCardRight > h4 {
+  font-size: 15px;
+  font-weight: 700;
+}
+.DisplayCardRight > p {
+  font-size: 12px;
+  font-weight: 400;
+}

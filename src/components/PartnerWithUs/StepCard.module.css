@@ -1,0 +1,41 @@
+.StepCardDisc {
+  margin: 60px auto;
+  text-align: center;
+}
+.StepCardDisc > h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.StepCardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 30px auto;
+}
+.StepCardWrap {
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  background-color: #fffefe;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 30px auto;
+}
+.StepCardWrap > h4 {
+  font-size: 15px;
+  font-weight: 600;
+}
+.StepCardWrap > p {
+  font-size: 12px;
+  font-weight: 500;
+}
+.StepCardImage > img {
+  width: 40px;
+}

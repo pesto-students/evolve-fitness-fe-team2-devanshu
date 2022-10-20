@@ -1,0 +1,41 @@
+.PartnerLoginWrap {
+  text-align: left;
+  position: relative;
+  top: -313px;
+}
+.PartnerLoginDisc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px 12px;
+}
+.PartnerLoginDisc > h1 {
+  color: rgb(255, 255, 255);
+  font-weight: 800;
+  font-size: 1.95rem;
+  line-height: 40px;
+  font-weight: 500;
+}
+.PartnerLoginDisc > p {
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 500;
+}
+.PartnerLoginBtnWrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+}
+.RegisterBtn {
+  box-sizing: border-box;
+  width: 350px;
+  background-color: #f21137;
+  padding: 12px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: white;
+  margin: 12px 12px;
+}
